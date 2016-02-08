@@ -1,0 +1,15 @@
+/* CSS definition file containing site stylesheet */
+
+/* big blocks for everything */
+#container {height:700px; width:90%; margin-left:auto;margin-right:auto;border: 3px solid #73AD21;}
+
+/*every component*/
+#navigation {height: 10%; background-color: green; font-size: 60px;color: white;line-height:60px}
+#content {height: 80%}
+#footer {height: 10%; font-size: small; font-style:italic;text-align:center;}
+
+/*navigation link property*/
+#navigation > a { padding-left: 0.5em; padding-right: 0.5em;text-decoration: none}
+#navigation > a:link {color: white}
+
+
