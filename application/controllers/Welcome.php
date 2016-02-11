@@ -1,10 +1,5 @@
 <?php
-/**
- * Feature 4: Elayne Boosler's quote page - shucks() method
- * Author: Yi(Evelyn) Dai 
- * Date: Jan 28, 2016
- * -----------------------------------
- */
+
 
 /**
  * Our homepage. Show a table of all the author pictures. Clicking on one should show their quote.

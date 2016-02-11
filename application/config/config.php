@@ -4,7 +4,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 // the menu basics (text navbar)
 $config['menu_choices'] = array(
 	'menudata' => array(
-		array('name' => 'Profile', 'link' => '/profile'),
+		array('name' => 'Portfolio', 'link' => '/portfolio'),
 		array('name' => 'Login', 'link' => '/login'),
                 array('name' => 'BotAssembly', 'link' => '/factory'),
 	)
@@ -43,7 +43,7 @@ $config['base_url'] = '';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -60,7 +60,7 @@ $config['index_page'] = 'index.php';
 |
 | WARNING: If you set this to 'PATH_INFO', URIs will always be URL-decoded!
 */
-$config['uri_protocol']	= 'REQUEST_URI';
+$config['uri_protocol']	= 'AUTO';
 
 /*
 |--------------------------------------------------------------------------
@@ -84,7 +84,7 @@ $config['url_suffix'] = '';
 | than english.
 |
 */
-$config['language']	= 'english';
+$config['language']= 'english';
 
 /*
 |--------------------------------------------------------------------------
