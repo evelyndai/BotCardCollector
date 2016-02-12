@@ -22,7 +22,7 @@ class Portfolio extends Application {
 
 	function index()
 	{
-		$this->data['pagebody'] = 'welcome_message';	// this is the view we want shown
+		$this->data['pagebody'] = '_portfolio';	// this is the view we want shown
 		
 
 		$this->render();
