@@ -27,4 +27,6 @@
         <td>{elevenc}</td>
     </tr>
     {/botcards}
+    {debug}
+    {/debug}
 </div>

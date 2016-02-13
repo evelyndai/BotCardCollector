@@ -3,23 +3,23 @@
 class Collections extends main_Model {
 
     function __construct() {
-        parent::__construct('token', 'player', 'piece', 'datetime');
+        parent::__construct('collections', 'Token', 'Player', 'Piece', 'Datetime');
     }
 
     function get_cards()
     {
         $current_player = 'Donald';
-        $collection = $this->db->get_where('collections', array('Player'=>$current_player);
-        return sort_cards($collection);
+        $collection = $this->db->get_where('collections', array('Player'=>$current_player))->result_array();
+        return $collection;
     }
 
     //Sort cards based on type, return array of card type counts
     function sort_cards($collection)
-	$card_array = array("elevena0" => 0, "elevena1" => 0, "elevena2" => 0,
-	 					"elevenb0" => 0, "elevenb1" => 0, "elevenb2" => 0,
-						"elevenc0" => 0, "elevenc1" => 0, "elevenc2" => 0,);
 	{
-		foreach ($collection->result() as $card)
+        $card_array = array("elevena0" => 0, "elevena1" => 0, "elevena2" => 0,
+    	 					"elevenb0" => 0, "elevenb1" => 0, "elevenb2" => 0,
+    						"elevenc0" => 0, "elevenc1" => 0, "elevenc2" => 0);
+		foreach ($collection as $card)
 		{
 			switch ($card['Piece'])
 			{
