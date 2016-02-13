@@ -1,32 +1,26 @@
 
 <div id="something">
     <p> Build a Bot! </p>
-    <tr>
-        <th>A type</th>
-        <th>B type</th>
-        <th>C type</th>
-    </tr>
-    {topcards}
-    <tr>
-        <td>{elevena}</td>
-        <td>{elevenb}</td>
-        <td>{elevenc}</td>
-    </tr>
-    {/topcards}
-    {midcards}
-    <tr>
-        <td>{elevena}</td>
-        <td>{elevenb}</td>
-        <td>{elevenc}</td>
-    </tr>
-    {/midcards}
-    {botcards}
-    <tr>
-        <td>{elevena}</td>
-        <td>{elevenb}</td>
-        <td>{elevenc}</td>
-    </tr>
-    {/botcards}
-    {debug}
-    {/debug}
+    <table>
+        <tr>
+            <th>A type</th>
+            <th>B type</th>
+            <th>C type</th>
+        </tr>
+        <tr>
+            <td><?php echo $topcards['elevena'];?></td>
+            <td><?php echo $topcards['elevenb'];?></td>
+            <td><?php echo $topcards['elevenc'];?></td>
+        </tr>
+        <tr>
+            <td><?php echo $midcards['elevena'];?></td>
+            <td><?php echo $midcards['elevenb'];?></td>
+            <td><?php echo $midcards['elevenc'];?></td>
+        </tr>
+        <tr>
+            <td><?php echo $botcards['elevena'];?></td>
+            <td><?php echo $botcards['elevenb'];?></td>
+            <td><?php echo $botcards['elevenc'];?></td>
+        </tr>
+    </table>
 </div>

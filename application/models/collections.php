@@ -19,6 +19,7 @@ class Collections extends main_Model {
         $card_array = array("elevena0" => 0, "elevena1" => 0, "elevena2" => 0,
     	 					"elevenb0" => 0, "elevenb1" => 0, "elevenb2" => 0,
     						"elevenc0" => 0, "elevenc1" => 0, "elevenc2" => 0);
+        if(!empty($collection)){
 		foreach ($collection as $card)
 		{
 			switch ($card['Piece'])
@@ -66,4 +67,5 @@ class Collections extends main_Model {
 		}
 	return $card_array;
 	}
+}
 }
