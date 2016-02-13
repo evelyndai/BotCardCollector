@@ -1,6 +1,14 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+// the menu basics (text navbar)
+$config['menu_choices'] = array(
+	'menudata' => array(
+		array('name' => 'Portfolio', 'link' => '/portfolio'),
+		array('name' => 'Login', 'link' => '/login'),
+                array('name' => 'BotAssembly', 'link' => '/factory'),
+	)
+);
 /*
 |--------------------------------------------------------------------------
 | Base Site URL
@@ -23,7 +31,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = '';
+$config['base_url'] = '/';
 
 /*
 |--------------------------------------------------------------------------
@@ -114,7 +122,7 @@ $config['enable_hooks'] = FALSE;
 | https://codeigniter.com/user_guide/general/creating_libraries.html
 |
 */
-$config['subclass_prefix'] = 'MY_';
+$config['subclass_prefix'] = 'main_';
 
 /*
 |--------------------------------------------------------------------------
