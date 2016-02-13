@@ -14,7 +14,7 @@ class Transactions extends main_Model2 {
 
     // add an item to an order
     function getTrans($player){
-        $query = $this->db->query('SELECT Player, DateTime, Series, Trans FROM transactions WHERE Player = ' . $player);
+        $query = $this->db->query('SELECT Player, DateTime, Series, Trans FROM transactions WHERE Player = "' . $player .'"');
       
         return $query->result_array();
     }
