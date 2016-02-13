@@ -20,9 +20,8 @@ class Portfolio extends Application {
 
     function index() {
         $this->data['pagebody'] = 'portfolio'; // this is the view we want shown
-
-       // $query = $this->db->query('SELECT Player, DateTime, Series, Trans FROM transactions WHERE Player = "Donald"');
-        $transaction = $this->Transactions->getTrans("'Donald'");
+        $loggedUser = "Donald";
+        $transaction = $this->Transactions->getTrans($loggedUser);
         $trans = array();
 
             foreach ($transaction as $record) {
@@ -30,11 +29,32 @@ class Portfolio extends Application {
             }
 
         // and pass these on to the view
-        //$this->load->view('trading_activity');
-        //->data['transactions'] = $trans;
         $this->data['transactions'] = $trans;
-        //$this->data['debug'] = print_r($query->result_array(), true);
+        //$this->data['debug'] = print_r($query->result_array(), true); 
         
+        $card_count = $this->collections->get_cards($loggedUser);
+	$card_counts = $this->collections->sort_cards($card_count);
+        $this->data['cards'] = $card_counts;
+        $this->render();
+    }
+    
+    function getPort(){
+        $this->data['pagebody'] = 'portfolio'; // this is the view we want shown
+        $player = $this->uri->segment(2);
+        $transaction = $this->Transactions->getTrans($player);
+        $trans = array();
+
+            foreach ($transaction as $record) {
+                $trans[] = $record;
+            }
+
+        $card_count = $this->collections->get_cards($player);
+	$card_counts = $this->collections->sort_cards($card_count);
+        
+        
+        // and pass these on to the view
+        $this->data['transactions'] = $trans;
+        $this->data['cards'] = $card_counts;
         $this->render();
     }
 
