@@ -4,6 +4,6 @@
  */
 ?>
 
-|{menudata}
-<a href="{link}">{name}</a>  |
+{menudata}
+<a href="{link}"> {name}</a>
 {/menudata}
