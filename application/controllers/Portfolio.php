@@ -20,7 +20,8 @@ class Portfolio extends Application {
 
     function index() {
         $this->data['pagebody'] = 'portfolio'; // this is the view we want shown
-        $loggedUser = "Donald";
+        $loggedUser = $this->session->userdata('username');
+       
         $transaction = $this->Transactions->getTrans($loggedUser);
         $trans = array();
 

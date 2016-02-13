@@ -22,7 +22,7 @@ class Login extends Application {
 	function index()
 	{
 		$this->data['pagebody'] = 'welcome_message';	// this is the view we want shown
-		$this->session->set_userdata('username','mike');
+		$this->session->set_userdata('username','Donald');
                 $this->data['username'] = $this->session->userdata('username');
 
 		$this->render();
