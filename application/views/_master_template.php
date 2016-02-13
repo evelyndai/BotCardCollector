@@ -9,7 +9,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <meta HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=UTF-8"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <link rel="stylesheet" type="text/css" href="/asset/style/base.css"/>
-           
+<!--        This is the custome stylesheet that can potentially override the base stylesheet-->
+        <link rel="stylesheet" type="text/css" href="{customCSS}"/>
+        
     </head>
     <body>
         <div id="container">
