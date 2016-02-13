@@ -54,3 +54,4 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['portfolio'] = 'portfolio';
 $route['factory'] = 'BotAssembly';
+$route['portfolio/(:any)'] = 'portfolio/getPort';
