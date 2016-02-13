@@ -20,10 +20,9 @@ class Portfolio extends Application {
 
     function index() {
         $this->data['pagebody'] = 'portfolio'; // this is the view we want shown
-        //$name = 'Donald';
-//        $transaction = $this->transactions->some('Player', $name);
+
        // $query = $this->db->query('SELECT Player, DateTime, Series, Trans FROM transactions WHERE Player = "Donald"');
-        $transaction = $this->Transactions->getTrans("'George'");
+        $transaction = $this->Transactions->getTrans("'Donald'");
         $trans = array();
 
             foreach ($transaction as $record) {
@@ -31,6 +30,8 @@ class Portfolio extends Application {
             }
 
         // and pass these on to the view
+        //$this->load->view('trading_activity');
+        //->data['transactions'] = $trans;
         $this->data['transactions'] = $trans;
         //$this->data['debug'] = print_r($query->result_array(), true);
         
