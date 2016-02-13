@@ -17,6 +17,7 @@ class Application extends CI_Controller {
 		$this->data['title'] = 'BotCardCollector';	// our default title
 		$this->errors = array();
 		$this->data['pageTitle'] = 'welcome';   // our default page
+                
 	}
 
 	/**
@@ -26,9 +27,16 @@ class Application extends CI_Controller {
 	{
 		$this->data['menubar'] = $this->parser->parse('_menubar', $this->config->item('menu_choices'), true);
 		$this->data['content'] = $this->parser->parse($this->data['pagebody'], $this->data, true);
+
+                $this->data['username'] = $this->session->userdata('username');
+                //$this->data['trade'] = $this->parser->parse('trading_activity',$this->data, true);
+                //$this->data['holdings'] = $this->parser->parse('holding', $this->data, true);
+                
+
 		// finally, build the browser page!
 
             
+
 		$this->data['data'] = &$this->data;
 
 		$this->parser->parse('_master_template', $this->data);
