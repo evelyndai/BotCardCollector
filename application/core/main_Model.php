@@ -113,7 +113,7 @@ interface Active_record {
  * @copyright           Copyright (c) 2010-2014, James L. Parry
  * ------------------------------------------------------------------------
  */
-class MY_Model extends CI_Model implements Active_Record {
+class main_Model extends CI_Model implements Active_Record {
 
     protected $_tableName;            // Which table is this a model for?
     protected $_keyField;             // name of the primary key field
@@ -265,7 +265,7 @@ class MY_Model extends CI_Model implements Active_Record {
 
 }
 
-class MY_Model2 extends MY_Model {
+class main_Model2 extends main_Model {
 
     protected $_keyField2;                 // second part of composite primary key
 
