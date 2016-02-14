@@ -22,9 +22,8 @@ class Welcome extends Application {
 	function index()
 	{
 		$this->data['pagebody'] = 'homepage';
-
 		//Setting variables
-		$current_player = "Donald";
+		$current_player = $this->session->userdata('username');
 		$total_cards = 0;
 		//Grabbing info from database
 		$series = $this->db->get('series')->result_array();
@@ -38,14 +37,12 @@ class Welcome extends Application {
 		$series_data = "";
 		$player_data = array();
 		$player_store_data = "";
-
 		//Manipulate raw data on series information to generate more data
 		for($x = 0; $x < count($series); $x++){
 			$series[$x]['Used'] = 0;
 			$total_cards = $total_cards + $series[$x]['Frequency'];
 		}
 		$cards_left = $total_cards;
-
 		//Setup players array to hold equity information
 		for($x = 0; $x < count($players); $x++){
 			$players[$x]['Equity'] = 0;
@@ -67,29 +64,29 @@ class Welcome extends Application {
 				}
 			}
 		}
-
+		//Create the information being viewed on the page
+		$gamestatus_title = "Game Status";
+		$playerstatus_title = "Player Status";
 		$store_data = "There are " . $cards_left . "/" . $total_cards . " cards left in the store.<br/>";
-
 		foreach($series as $record){
 		 	$record_left = $record['Frequency'] - $record['Used'];
 			$series_data .= "In the " . $record['Series'] . " Series there are " . $record_left . " cards left.<br/>";
 			if(empty($collection_info[$record['Series']])){
 				$collection_info[$record['Series']] = 0;
 			}
-			$player_store_data .= "You have bought " . $collection_info[$record['Series']] . " cards from the " . $record['Series'] . " in total.<br/>";
+			$player_store_data .= "You have bought " . $collection_info[$record['Series']] . " cards from the " . $record['Series'] . " Series.<br/>";
 		}
 		foreach($players as $record){
 			$player_data[] = array('playerlink' => "portfolio/".$record['Player'], 'playername' => $record['Player'] , 'playerpeanuts' => $record['Peanuts'] , 'playerequity' => $record['Equity']);
 		}
-
-		$this->data['gamestatus'] = $store_data . $series_data . $player_store_data;	// this is the view we want shown
+		//Set the information being viewed on the page
+		$this->data['customCSS'] = '/asset/style/home.css';
+		$this->data['gamestatus_title'] = $gamestatus_title;
+		$this->data['playerstatus_title'] = $playerstatus_title;
+		$this->data['gamestatus'] = $store_data . $series_data . $player_store_data;
 		$this->data['playerstatus'] = $player_data;
 		$this->render();
 	}
-
-
-
-
 }
 
 /* End of file Welcome.php */
