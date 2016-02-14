@@ -21,7 +21,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             </div>
 <!--content block-->
             <div id="content">
-                <h1>{title}</h1>
                 {content}
             </div>
 <!--footer information-->
