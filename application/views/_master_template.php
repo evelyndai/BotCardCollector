@@ -14,22 +14,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
     </head>
     <body>
-        <div id="container">
+       <div id="container">
             <!--            navigation bar-->
             <div id="titlebar">
-                <img src="/asset/images/Home-image.png" /><h1>{title}</h1>
+                <a href="/"><img src="/asset/images/Home-image.png" height="105px"/></a>
             </div>
             <div id="navigation">
                 {menubar}
             </div>
+        
             <!--content block-->
             <div id="content">
                
                 {content}
             </div>
             <!--footer information-->
-            <div id="footer" class="span12">
+            <div id="footer" >
+
                 Acit4850 Assignment by Casper Co, Evelyn Dai, Jimmi Lin, Justin Walk
+              
             </div>
         </div>
         <script type="text/javascript" src="/asset/javascript/bot_image.js"></script>

@@ -1,17 +1,30 @@
 /* CSS definition file containing site stylesheet */
 
 /* big blocks for everything */
-#container {height:700px; width:90%; margin-left:auto;margin-right:auto;border: 3px solid #73AD21;}
+#container {height:700px; width:90%; margin-left:auto;margin-right:auto;}
 
 /*every component*/
-#navigation {height: 10%; background-color: green; font-size: 50px;color: white;line-height:60px}
-#content {height: 80%}
-#footer {height: 10%; font-size: small; font-style:italic;text-align:center;}
+#navigation {height: 7%; background-color: black; font-size: 35px;color: white;line-height:60px}
+#content {height: 75%;border: 3px solid #22B14C;}
+#footer {
+    height: 3%; 
+    font-size: small; 
+    font-style:italic;
+    text-align:center;
+    background-color: #22B14C;
+}
+
 
 /*navigation link property*/
 #navigation > a { padding-left: 0.5em; padding-right: 0.5em;text-decoration: none}
 #navigation > a:link {color: white}
+#navigation > a:visited {color: white}
 
+
+#titlebar{
+    height: 15%; 
+    background-color: #22B14C;
+}
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
