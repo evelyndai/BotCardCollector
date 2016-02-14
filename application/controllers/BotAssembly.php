@@ -25,11 +25,12 @@ class BotAssembly extends Application {
    						   'Eleven-B' => $card_count['elevenb1'],
    					   	   'Eleven-C' => $card_count['elevenc1']);
 
+		//build array of middle card pieces and counts
 	    $bot_cards = array('Eleven-A' => $card_count['elevena2'],
    						   'Eleven-B' => $card_count['elevenb2'],
    					   	   'Eleven-C' => $card_count['elevenc2']);
 
-	   //build array of middle card pieces and counts
+
 		$this->data['topcards'] = $top_cards;
 		$this->data['midcards'] = $mid_cards;
 		$this->data['botcards'] = $bot_cards;
