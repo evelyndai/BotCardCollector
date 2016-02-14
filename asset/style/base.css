@@ -30,6 +30,10 @@ img{
     float: left;
 }
 
+.portfolio{
+    margin:auto;
+}
+
 .holdings img{
     height:84px;
     width:200px;
@@ -46,7 +50,7 @@ img{
 }
 
 #ptitle{
-    font-size: 15px;
+    font-size:20px;
     font-weight:bold; 
 }
 #ptitle select{
