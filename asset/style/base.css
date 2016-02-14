@@ -12,6 +12,8 @@
 #navigation > a { padding-left: 0.5em; padding-right: 0.5em;text-decoration: none}
 #navigation > a:link {color: white}
 
+body{font: normal 16px/26px Arial, sans-serif;}
+
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
@@ -28,7 +30,7 @@ img{
     float: left;
 }
 
-.holdings{
+.holdings img{
     height:84px;
     width:200px;
 }
@@ -40,6 +42,21 @@ img{
 #trading{
     float: left;
 }
+
+#ptitle{
+    font-size: 15px;
+    font-weight:bold; 
+}
+#ptitle select{
+    float: left;
+    font-size: 100px;
+    width: 100px;
+}
+.portfolioTitle{
+    font-size: 25px;
+    color:#4CAF50;
+}
+
 
 #select_bots{
     float: left;
