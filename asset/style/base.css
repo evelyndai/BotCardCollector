@@ -25,6 +25,10 @@
     height: 15%; 
     background-color: #22B14C;
 }
+
+body{font: normal 16px/26px Arial, sans-serif;}
+
+
 tr:nth-child(even){background-color: #f2f2f2}
 
 th {
@@ -41,23 +45,44 @@ img{
     float: left;
 }
 
-.holdings{
+.portfolio{
+    margin:auto;
+}
+
+.holdings img{
     height:84px;
     width:200px;
 }
 
 #holdings{
-    float:right;
+    float:left;
+    margin-left:3%;
 }
 
 #trading{
     float: left;
+    margin:0;
 }
+
+#ptitle{
+    font-size:20px;
+    font-weight:bold; 
+}
+#ptitle select{
+    float: left;
+    font-size: 20px;
+    width: 100px;
+}
+.portfolioTitle{
+    font-size: 20px;
+    color:#4CAF50;
+}
+
 
 #select_bots{
     float: left;
     width: 25%;
-    margin-left: 5%;
+    margin-left: 3%;
 }
 
 #assemble_images {

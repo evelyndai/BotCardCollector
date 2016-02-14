@@ -1,5 +1,5 @@
 <div id="select_bots">
-    <p> Build a Bot! </p>
+    <p class='portfolioTitle'> Build a Bot! </p>
     <select name="Top Pieces" onchange="load_top_image(this);">
         <option value=0>'Pick a top for your bot!'</option>
         <?php

@@ -55,4 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 $route['portfolio'] = 'portfolio';
 $route['login'] = 'login';
 $route['factory'] = 'BotAssembly';
-$route['portfolio/(:any)'] = 'portfolio/getPort';
+$route['portfolio/(:any)'] = 'portfolio/index/$1';
