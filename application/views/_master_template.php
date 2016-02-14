@@ -25,7 +25,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         
             <!--content block-->
             <div id="content">
-               
+
                 {content}
             </div>
             <!--footer information-->
