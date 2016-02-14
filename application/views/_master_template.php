@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--            navigation bar-->
             <div id="titlebar">
                 <a href="/"><img src="/asset/images/Home-image.png" height="105px"/></a>
+                Hi, {username}
             </div>
             <div id="navigation">
                 {menubar}

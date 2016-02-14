@@ -19,12 +19,13 @@
 #navigation > a { padding-left: 0.5em; padding-right: 0.5em;text-decoration: none}
 #navigation > a:link {color: white}
 #navigation > a:visited {color: white}
-
+form {display:inline}
 
 #titlebar{
     height: 15%; 
     background-color: #22B14C;
 }
+
 
 body{font: normal 16px/26px Arial, sans-serif;}
 

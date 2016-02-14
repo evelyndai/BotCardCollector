@@ -13,6 +13,7 @@ class Login extends Application {
 	function __construct()
 	{
 		parent::__construct();
+                $this->data['customCSS'] = '/asset/style/login.css';
 	}
 
 	//-------------------------------------------------------------
@@ -21,13 +22,20 @@ class Login extends Application {
 
 	function index()
 	{
-		$this->data['pagebody'] = 'welcome_message';	// this is the view we want shown
+		$this->data['pagebody'] = 'login';	// this is the view we want shown
 		$this->session->set_userdata('username','Donald');
                 $this->data['username'] = $this->session->userdata('username');
 
 		$this->render();
 	}
-
+        
+        function login()
+        {
+                $this->data['pagebody'] = 'homepage';
+                $this->session->set_userdata('username',  $this->input->post('username'));
+                
+                $this->render();
+        }
 
 
 
