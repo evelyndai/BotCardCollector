@@ -1,8 +1,8 @@
-<div id="user">
-    <form action="/" method="post">
-        User Login
-        <input type="text" name="username">
-        <input type="text" name="password">
-        <input type="submit" value="Enter">
-    </form>
-</div>
+
+<form action="/login/login" method="post">
+    User Login
+    <br />
+    Username: <input type="text" name="username" /><br />
+    Password: <input type="text" name="password" /><br />
+    <input type="submit" value="Enter" /><br />
+</form>
