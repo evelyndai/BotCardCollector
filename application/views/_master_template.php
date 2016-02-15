@@ -18,7 +18,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <!--            navigation bar-->
             <div id="titlebar">
                 <a href="/"><img src="/asset/images/Home-image.png" height="105px"/></a>
-                Hi, {username}
+                <div id="greeting">
+                    <h3>Hi! {username}</h3>
+                </div>
             </div>
             <div id="navigation">
                 {menubar}
@@ -29,13 +31,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 {content}
             </div>
-            <!--footer information-->
+            
+        </div>
+        <script type="text/javascript" src="/asset/javascript/bot_image.js"></script>
+        <!--footer information-->
             <div id="footer" >
 
                 Acit4850 Assignment by Casper Co, Evelyn Dai, Jimmi Lin, Justin Walk
               
             </div>
-        </div>
-        <script type="text/javascript" src="/asset/javascript/bot_image.js"></script>
     </body>
 </html>

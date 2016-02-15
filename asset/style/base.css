@@ -1,17 +1,22 @@
 /* CSS definition file containing site stylesheet */
 
 /* big blocks for everything */
-#container {height:700px; width:90%; margin-left:auto;margin-right:auto;}
+#container { }
 
 /*every component*/
-#navigation {height: 7%; background-color: black; font-size: 35px;color: white;line-height:60px}
-#content {height: 75%;border: 3px solid #22B14C;}
+#navigation {clear: both;height: 7%; background-color: black; font-size: 35px;color: white;line-height:60px}
+#content {clear: both; }
 #footer {
-    height: 3%; 
+    width: 90%;
+    height: 20px; 
     font-size: small; 
     font-style:italic;
     text-align:center;
     background-color: #22B14C;
+    position: fixed;
+    bottom: 0;
+    clear: both;
+
 }
 
 
@@ -19,15 +24,26 @@
 #navigation > a { padding-left: 0.5em; padding-right: 0.5em;text-decoration: none}
 #navigation > a:link {color: white}
 #navigation > a:visited {color: white}
-form {display:inline}
+#greeting {
+    float: right;
+    position: relative;
+}
 
 #titlebar{
-    height: 15%; 
+    
+    height: 105px; 
     background-color: #22B14C;
 }
 
 
-body{font: normal 16px/26px Arial, sans-serif;}
+body{
+    height:100%;
+    width:90%; 
+    margin-left:auto;
+    margin-right:auto;
+    clear: both;
+    font: normal 16px/26px Arial, sans-serif;
+    min-width: 200px;}
 
 
 tr:nth-child(even){background-color: #f2f2f2}

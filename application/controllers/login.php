@@ -23,17 +23,17 @@ class Login extends Application {
 	function index()
 	{
 		$this->data['pagebody'] = 'login';	// this is the view we want shown
-		$this->session->set_userdata('username','Donald');
-                $this->data['username'] = $this->session->userdata('username');
+		
 
 		$this->render();
 	}
         
         function login()
         {
-                $this->data['pagebody'] = 'homepage';
-                $this->session->set_userdata('username',  $this->input->post('username'));
-                
+                $this->data['pagebody'] = 'login';
+                $credential = $this->input->post('username');
+                $this->session->set_userdata('username',  $credential);
+
                 $this->render();
         }
 
