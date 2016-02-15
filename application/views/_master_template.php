@@ -19,7 +19,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="titlebar">
                 <a href="/"><img src="/asset/images/Home-image.png" height="105px"/></a>
                 <div id="greeting">
-                    <h3>Hi! {username}</h3>
+                    {logincred}
                 </div>
             </div>
             <div id="navigation">
