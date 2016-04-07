@@ -1,0 +1,7 @@
+2016/02/09 - Jimmi Lin - Added master template
+2016/02/12 - Evelyn Dai - Added portfolio
+2016/02/12 - Justin Walk - Added Bot Assembly
+2016/02/12 - Casper Co - Added Homepage
+2016/02/13 - Jimmi Lin - Added Log In
+2016/02/13 - Evelyn Dai - Completed portfolio
+2016/02/13 - Justin Walk - Completed Bot Assembly

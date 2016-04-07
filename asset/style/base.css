@@ -1,0 +1,76 @@
+/* CSS definition file containing site stylesheet */
+
+/* big blocks for everything */
+#container {height:700px; width:90%; margin-left:auto;margin-right:auto;border: 3px solid #73AD21;}
+
+/*every component*/
+#navigation {height: 10%; background-color: green; font-size: 50px;color: white;line-height:60px}
+#content {height: 80%}
+#footer {height: 10%; font-size: small; font-style:italic;text-align:center;}
+
+/*navigation link property*/
+#navigation > a { padding-left: 0.5em; padding-right: 0.5em;text-decoration: none}
+#navigation > a:link {color: white}
+
+body{font: normal 16px/26px Arial, sans-serif;}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+th, td {
+    padding: 15px;
+    text-align:center;
+}
+
+img{
+    float: left;
+}
+
+.portfolio{
+    margin:auto;
+}
+
+.holdings img{
+    height:84px;
+    width:200px;
+}
+
+#holdings{
+    float:left;
+    margin-left:3%;
+}
+
+#trading{
+    float: left;
+    margin:0;
+}
+
+#ptitle{
+    font-size:20px;
+    font-weight:bold; 
+}
+#ptitle select{
+    float: left;
+    font-size: 20px;
+    width: 100px;
+}
+.portfolioTitle{
+    font-size: 20px;
+    color:#4CAF50;
+}
+
+
+#select_bots{
+    float: left;
+    width: 25%;
+    margin-left: 3%;
+}
+
+#assemble_images {
+    float: left;
+    width: 100px;
+}
