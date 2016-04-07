@@ -79,19 +79,21 @@ INSERT INTO `collections` (`COL 1`, `COL 2`, `COL 3`, `COL 4`) VALUES
 DROP TABLE IF EXISTS `players`;
 CREATE TABLE IF NOT EXISTS `players` (
   `COL 1` varchar(6) DEFAULT NULL,
-  `COL 2` varchar(7) DEFAULT NULL
+  `COL 2` varchar(7) DEFAULT NULL,
+  `COL 3` varchar(10) DEFAULT NULL,
+  `COL 4` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `players`
 --
 
-INSERT INTO `players` (`COL 1`, `COL 2`) VALUES
-('Player', 'Peanuts'),
-('Mickey', '200'),
-('Donald', '35'),
-('George', '500'),
-('Henry', '100');
+INSERT INTO `players` (`COL 1`, `COL 2`, `COL 3`, `COL 4`) VALUES
+('Player', 'Peanuts', 'Password', 'Avatar'),
+('Mickey', '200', 'password', 'file.png'),
+('Donald', '35', 'password', 'file.png'),
+('George', '500', 'password', 'file.png'),
+('Henry', '100', 'password', 'file.png');
 
 -- --------------------------------------------------------
 
