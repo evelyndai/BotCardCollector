@@ -5,3 +5,4 @@
 2016/02/13 - Jimmi Lin - Added Log In
 2016/02/13 - Evelyn Dai - Completed portfolio
 2016/02/13 - Justin Walk - Completed Bot Assembly
+2016/02/14 - Casper Co - Completed Homepage

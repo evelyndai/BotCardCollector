@@ -10,26 +10,37 @@
  */
 class Login extends Application {
 
-	function __construct()
-	{
-		parent::__construct();
-	}
+    function __construct() {
+        parent::__construct();
+        $this->data['customCSS'] = '/asset/style/login.css';
+    }
 
-	//-------------------------------------------------------------
-	//  The normal pages
-	//-------------------------------------------------------------
+    //-------------------------------------------------------------
+    //  The normal pages
+    //-------------------------------------------------------------
 
-	function index()
-	{
-		$this->data['pagebody'] = 'welcome_message';	// this is the view we want shown
-		$this->session->set_userdata('username','Donald');
-                $this->data['username'] = $this->session->userdata('username');
-
-		$this->render();
-	}
+    function index() {
+        $this->data['pagebody'] = 'login'; // this is the view we want shown
 
 
+        $this->render();
+    }
 
+    function login() {
+        $this->data['pagebody'] = 'login';
+        $credential = $this->input->post('username');
+        $this->session->set_userdata('username', $credential);
+        $this->data['username'] = $credential;
+        $this->render();
+    }
+
+    function logout() {
+        $this->data['pagebody'] = 'login';
+        
+        $this->session->set_userdata('username', '');
+
+        $this->render();
+    }
 
 }
 
