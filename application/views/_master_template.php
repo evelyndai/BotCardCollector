@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" type="text/css" href="/asset/style/base.css"/>
         <!--        This is the custome stylesheet that can potentially override the base stylesheet-->
         <link rel="stylesheet" type="text/css" href="{customCSS}"/>
-
+        <script type="text/javascript" href="/asset/js/jquery.js"/>
     </head>
     <body>
        <div id="container">
@@ -25,20 +25,20 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <div id="navigation">
                 {menubar}
             </div>
-        
+
             <!--content block-->
             <div id="content">
 
                 {content}
             </div>
-            
+
         </div>
         <script type="text/javascript" src="/asset/javascript/bot_image.js"></script>
         <!--footer information-->
             <div id="footer" >
 
                 Acit4850 Assignment by Casper Co, Evelyn Dai, Jimmi Lin, Justin Walk
-              
+
             </div>
     </body>
 </html>
