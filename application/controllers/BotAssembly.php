@@ -15,21 +15,27 @@ class BotAssembly extends Application {
 		//get counts of individual card pieces
 		$card_count = $this->collections->sort_cards($card_count);
 
-		//build array of top card pieces and counts
-		$top_cards = array('Eleven-A' => $card_count['elevena0'],
-						   'Eleven-B' => $card_count['elevenb0'],
-					   	   'Eleven-C' => $card_count['elevenc0']);
+		//initialize arrays for sorting cards by type
+		$top_cards = [];
+		$mid_cards = [];
+		$bot_cards = [];
 
-	   //build array of middle card pieces and counts
-	    $mid_cards = array('Eleven-A' => $card_count['elevena1'],
-   						   'Eleven-B' => $card_count['elevenb1'],
-   					   	   'Eleven-C' => $card_count['elevenc1']);
-
-		//build array of middle card pieces and counts
-	    $bot_cards = array('Eleven-A' => $card_count['elevena2'],
-   						   'Eleven-B' => $card_count['elevenb2'],
-   					   	   'Eleven-C' => $card_count['elevenc2']);
-
+		//build arrays of card pieces and counts, seperated by top, middle and bottom
+		foreach ($card_count as $key => $value)
+		{
+			if (substr($key, -1) == "0")
+			{
+				$top_cards[$key] = $value;
+			}
+			else if (substr($key, -1) == "1")
+			{
+				$mid_cards[$key] = $value;
+			}
+			else if (substr($key, -1) == "2")
+			{
+				$bot_cards[$key] = $value;
+			}
+		}
 
 		$this->data['topcards'] = $top_cards;
 		$this->data['midcards'] = $mid_cards;

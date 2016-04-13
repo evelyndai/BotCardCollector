@@ -8,7 +8,7 @@
         {
             if($value > 0)
             {
-                echo "<option value=" . $key . ">" . $key . " (" . $value . ")</option>";
+                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
             }
         }
         ?>
@@ -22,7 +22,7 @@
         {
             if($value > 0)
             {
-                echo "<option value=" . $key . ">" . $key . " (" . $value . ")</option>";
+                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
             }
         }
         ?>
@@ -36,7 +36,7 @@
         {
             if($value > 0)
             {
-                echo "<option value=" . $key . ">" . $key . " (" . $value . ")</option>";
+                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
             }
         }
         ?>
