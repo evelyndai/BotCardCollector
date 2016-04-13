@@ -6,80 +6,52 @@ class Collections extends main_Model {
         parent::__construct('collections', 'Token', 'Player', 'Piece', 'Datetime');
     }
 
+    //get players card collection
     function get_cards($current_player) {
         $collection = $this->db->get_where('collections', array('Player' => $current_player))->result_array();
         return $collection;
     }
 
+    function php_post($data, $url_route)
+    {
+        $url = "http://ken-botcards.azurewebsites.net".$url_route;
+        // use key 'http' even if you send the request to https://...
+        $options = array(
+            'http' => array(
+                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
+                'method'  => 'POST',
+                'content' => http_build_query($data)
+            )
+        );
+        $context  = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        // if ($result === FALSE) { /* Handle error */ }
+
+        return $result;
+    }
+
     //Sort cards based on type, return array of card type counts
     function sort_cards($collection) {
-        $card_array = array("elevena0" => 0, "elevena1" => 0, "elevena2" => 0,
-        "elevenb0" => 0, "elevenb1" => 0, "elevenb2" => 0,
-        "elevenc0" => 0, "elevenc1" => 0, "elevenc2" => 0,
-        "thirteenc0" => 0,"thirteenc1" => 0, "thirteenc2" => 0,
-        "thirteend0" => 0,"thirteend1" => 0, "thirteend2" => 0,
-        "twentysixh0" => 0, "twentysixh1" => 0, "twentysixh2" => 0);
-        if (!empty($collection)) {
-            foreach ($collection as $card) {
-                switch ($card['Piece']) {
-                    case "11a-0":
-                        $card_array["elevena0"] += 1;
-                        break;
-                    case "11a-1":
-                        $card_array["elevena1"] += 1;
-                        break;
-                    case "11a-2":
-                        $card_array["elevena2"] += 1;
-                        break;
-                    case "11b-0":
-                        $card_array["elevenb0"] += 1;
-                        break;
-                    case "11b-1":
-                        $card_array["elevenb1"] += 1;
-                        break;
-                    case "11b-2":
-                        $card_array["elevenb2"] += 1;
-                        break;
-                    case "11c-0":
-                        $card_array["elevenc0"] += 1;
-                        break;
-                    case "11c-1":
-                        $card_array["elevenc1"] += 1;
-                        break;
-                    case "11c-2":
-                        $card_array["elevenc2"] += 1;
-                        break;
-                    case "13c-0":
-                        $card_array["thirteenc0"] += 1;
-                        break;
-                    case "13c-1":
-                        $card_array["thirteenc1"] += 1;
-                        break;
-                    case "13c-2":
-                        $card_array["thirteenc2"] += 1;
-                        break;
-                    case "13d-0":
-                        $card_array["thirteend0"] += 1;
-                        break;
-                    case "13d-1":
-                        $card_array["thirteend1"] += 1;
-                        break;
-                    case "13d-2":
-                        $card_array["thirteend2"] += 1;
-                        break;
-                    case "26h-0":
-                        $card_array["twentysixh0"] += 1;
-                        break;
-                    case "26h-1":
-                        $card_array["twentysixh1"] += 1;
-                        break;
-                    case "26h-2":
-                        $card_array["twentysixh2"] += 1;
-                        break;
-                }
+        //get list of all card types
+        $card_list = $this->db->query('SELECT DISTINCT(Piece) FROM botcards.collections')->result_array();
+        $card_array = [];
+
+        //build array of cards with counts set to 0
+        foreach ($card_list as $card)
+        {
+            $card_array["card".$card['Piece']] = 0;
+        }
+
+        //add 1 to count for each card of a given type owned by the player
+        if(!empty($collection))
+        {
+            foreach ($collection as $card)
+            {
+                $card_array["card".$card['Piece']] += 1;
             }
             return $card_array;
         }
+
     }
 
 }
