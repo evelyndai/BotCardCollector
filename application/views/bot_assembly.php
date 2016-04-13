@@ -43,8 +43,9 @@
     </select>
     <br /><br /><br /><br /><br />
     <button type="button">Assemble</button>
+    <br />
+    <label>{post}</label>
 </div>
-
 <!-- image src will be changed based on selected item from dropdown menus -->
 <div id="assemble_images">
     <img src="" id="bot_top" alt="">

@@ -37,6 +37,10 @@ class BotAssembly extends Application {
 			}
 		}
 
+		$dataArray = array("team" => "B06", "name" => "FilthyCasuals","password" => "tuesday");
+
+		$this->data['post'] = $this->collections->php_post($dataArray, "/register");
+
 		$this->data['topcards'] = $top_cards;
 		$this->data['midcards'] = $mid_cards;
 		$this->data['botcards'] = $bot_cards;
