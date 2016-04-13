@@ -11,7 +11,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <link rel="stylesheet" type="text/css" href="/asset/style/base.css"/>
         <!--        This is the custome stylesheet that can potentially override the base stylesheet-->
         <link rel="stylesheet" type="text/css" href="{customCSS}"/>
-        <script type="text/javascript" href="/asset/js/jquery.js"/>
+        <!-- <script type="text/javascript" href="/asset/js/jquery.js"/> -->
     </head>
     <body>
        <div id="container">
