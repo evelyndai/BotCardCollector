@@ -1,14 +1,14 @@
 
 
 <div class="portfolio">
-    <div id='ptitle'>{players} <p> 's Portfolio    </p>
+    <div id='ptitle'>{players}
         <p>Peanuts: {peanuts}</p>
         <form method = "post">
             <input type="submit" name="buyCards" value='Buy cards' />
         </form>{status}</div>
     <div id="trading">
         <p class='portfolioTitle'> Trading Activities </p>
-        <table class="table">
+        <table class="porttables">
             <tr>
                 <th>DateTime</th>
                 <th>Player</th>
@@ -29,7 +29,7 @@
 
     <div id="holdings">
         <p class='portfolioTitle'> Current Holdings </p>
-        <table>
+        <table class="porttables">
 
             <tr>
                 <th>Series</th>
@@ -54,6 +54,30 @@
                 <td class="holdings"><img src="/asset/images/11c-0.jpeg" title="11c-0"/> <br />{card11c-0}</td>
                 <td class="holdings"><img src="/asset/images/11c-1.jpeg" title="11c-1"/> <br />{card11c-1}</td>
                 <td class="holdings"><img src="/asset/images/11c-2.jpeg" title="11c-2"/> <br />{card11c-2}</td>
+            </tr>
+            <tr>
+                <td>11d</td>
+                <td class="holdings"><img src="/asset/images/11d-0.jpeg" title="11c-0"/> <br />{card11d-0}</td>
+                <td class="holdings"><img src="/asset/images/11d-1.jpeg" title="11c-1"/> <br />{card11d-1}</td>
+                <td class="holdings"><img src="/asset/images/11d-2.jpeg" title="11c-2"/> <br />{card11d-2}</td>
+            </tr>
+            <tr>
+                <td>11e</td>
+                <td class="holdings"><img src="/asset/images/11e-0.jpeg" title="11c-0"/> <br />{card11e-0}</td>
+                <td class="holdings"><img src="/asset/images/11e-1.jpeg" title="11c-1"/> <br />{card11e-1}</td>
+                <td class="holdings"><img src="/asset/images/11e-2.jpeg" title="11c-2"/> <br />{card11e-2}</td>
+            </tr>
+            <tr>
+                <td>13a</td>
+                <td class="holdings"><img src="/asset/images/13a-0.jpeg" title="13c-0"/> <br />{card13a-0}</td>
+                <td class="holdings"><img src="/asset/images/13a-1.jpeg" title="13c-1"/> <br />{card13a-1}</td>
+                <td class="holdings"><img src="/asset/images/13a-2.jpeg" title="13c-2"/> <br />{card13a-2}</td>
+            </tr>
+            <tr>
+                <td>13b</td>
+                <td class="holdings"><img src="/asset/images/13b-0.jpeg" title="13d-0"/> <br />{card13b-0}</td>
+                <td class="holdings"><img src="/asset/images/13b-1.jpeg" title="13d-1"/> <br />{card13b-1}</td>
+                <td class="holdings"><img src="/asset/images/13b-2.jpeg" title="13d-2"/> <br />{card13b-2}</td>
             </tr>
             <tr>
                 <td>13c</td>
