@@ -11,7 +11,7 @@ class Collections extends main_Model {
         $collection = $this->db->get_where('collections', array('Player' => $current_player))->result_array();
         return $collection;
 
-        $dataArray = array("token" => "hi");
+        //$dataArray = array("token" => "hi");
         // $collectionstring = $this->collections->php_post($dataArray, "/data/certificates");
         // $collections= explode("\n", $collectionstring);
         // $url = "http://ken-botcards.azurewebsites.net/data/certificates";
@@ -74,7 +74,7 @@ class Collections extends main_Model {
         {
             foreach ($collection as $card)
             {
-                $card_array["card".$card] += 1;
+                $card_array["card".$card['Piece']] += 1;
             }
             return $card_array;
         }
