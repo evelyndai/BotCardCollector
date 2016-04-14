@@ -40,7 +40,6 @@ class BotAssembly extends Application {
 				}
 			}
 		}
-		print_r($top_cards); die();
 
 		$this->data['post'] = $this->botserver->get_token();
 
