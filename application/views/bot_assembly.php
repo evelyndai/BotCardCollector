@@ -42,7 +42,9 @@
         ?>
     </select>
     <br /><br /><br /><br /><br />
-    <button type="button">Sell</button>
+    <form method = "post">
+        <input type="submit" name="buyCards" value='ASSEMBLE AND ROLL OUT' />
+    </form>
     <br />
     <label>{post}</label>
 </div>

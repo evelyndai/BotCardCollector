@@ -51,6 +51,12 @@ class BotAssembly extends Application {
 		$this->data['midcards'] = $mid_cards;
 		$this->data['botcards'] = $bot_cards;
 
+		//Handle Selling of cards
+		if (!is_null($this->input->post('buyCards')))
+		{
+			
+		}
+
 		$this->render();
 	}
 }
