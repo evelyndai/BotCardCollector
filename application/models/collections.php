@@ -22,13 +22,13 @@ class Collections extends main_Model {
         {
             foreach ($rows as $row)
             {
-                if ($row[3] == $current_player && $row[2] == "b06")
+                if ($row[3] == strtolower($current_player) && $row[2] == "b06")
                 {
                     $collection[] = array("piece" => $row[1], "certificate" => $row[0]);
                 }
             }
         }
-        
+
         return $collection;
     }
 
@@ -49,7 +49,7 @@ class Collections extends main_Model {
         {
             foreach ($collection as $card)
             {
-                $card_array["card".$card['Piece']] += 1;
+                $card_array["card".$card['piece']] += 1;
             }
             return $card_array;
         }

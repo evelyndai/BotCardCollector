@@ -55,7 +55,6 @@ class Botserver extends main_Model {
     }
   }
 
-
   function get_state(){
     $handle = $this->botserver->php_get("/status");
     $status = new SimpleXMLElement($handle);
