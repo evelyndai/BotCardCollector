@@ -23,3 +23,5 @@ function select_player(elem)
 {
     window.location = "/portfolio/" + elem.value;
 }
+
+
