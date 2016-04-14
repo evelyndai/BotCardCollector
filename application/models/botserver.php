@@ -24,4 +24,5 @@ class Botserver extends main_Model {
 //        die();
       return $result;
   }
+}
 ?>
