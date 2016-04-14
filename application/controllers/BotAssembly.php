@@ -26,20 +26,21 @@ class BotAssembly extends Application {
 		{
 			foreach ($card_count as $key => $value)
 			{
-				if (substr($key, -1) == "0")
+				if (substr($value['card'], -1) == "0")
 				{
 					$top_cards[$key] = $value;
 				}
-				else if (substr($key, -1) == "1")
+				else if (substr($value['card'], -1) == "1")
 				{
 					$mid_cards[$key] = $value;
 				}
-				else if (substr($key, -1) == "2")
+				else if (substr($value['card'], -1) == "2")
 				{
 					$bot_cards[$key] = $value;
 				}
 			}
 		}
+		print_r($top_cards); die();
 
 		$this->data['post'] = $this->botserver->get_token();
 

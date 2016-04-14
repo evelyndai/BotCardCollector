@@ -35,9 +35,9 @@ class Portfolio extends Application {
 //        if($state == 3 && $state ==2){
 //            $this->player->initPeanut(100);
 //        }
-//        
-//        
-//        
+//
+//
+//
         //Trading Activities
         $transaction = $this->Transactions->get_trans($user);
         $this->data['transactions'] = $transaction;
@@ -92,7 +92,7 @@ class Portfolio extends Application {
                 redirect('/portfolio', false);
                 $this->data['status'] = "you don't have enough peanuts!";
             }
-            
+
         }
 
 
