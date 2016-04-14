@@ -4,5 +4,5 @@
     <input type="submit" value="Enter" />
 </form>
 <div align=right">
-<a href="" float:right >Registration</a>
+<a href="/registration/" float:right >Registration</a>
 </div>
