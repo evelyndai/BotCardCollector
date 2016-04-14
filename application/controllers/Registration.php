@@ -8,7 +8,7 @@
  *
  * ------------------------------------------------------------------------
  */
-class Login extends Application {
+class Registration extends Application {
 
     function __construct() {
         parent::__construct();
@@ -20,33 +20,38 @@ class Login extends Application {
     //-------------------------------------------------------------
 
     function index() {
-        $this->data['pagebody'] = 'login'; // this is the view we want shown
+        $this->data['pagebody'] = 'registration'; // this is the view we want shown
 
 
         $this->render();
     }
 
-    function login() {
-        $this->data['pagebody'] = 'login';
+    function register(){
         $username = $this->input->post('username');
-        $result = $this->user->login($username, $this->input->post('password'));
-        
-        if($result[0] == null){
+        $password = $this->input->post('password');
+        $result = $this->user->checkUser($username);
+        if($result[0] != null){
             redirect('/', 'refresh');
         }else{
-            $this->session->set_userdata('username', $result[0]->player);
-            $this->data['username'] = $result[0]->player;
+            $data = array(
+                'player' => $username,
+                'Peanuts' => '',
+                'Password' => $password,
+                'Avatar' => '',
+            );
+            $this->user->insertUser($data);
             redirect('/', 'refresh');
+            
         }
         
+//        if($result[0] == null){
+//            redirect('/', 'refresh');
+//        }else{
+//            $this->session->set_userdata('username', $result[0]->player);
+//            $this->data['username'] = $result[0]->player;
+//            redirect('/', 'refresh');
+//        }
         
-    }
-
-    function logout() {
-        $this->data['pagebody'] = 'login';
-        $this->session->set_userdata('username', '');
-        redirect('/', 'refresh');
-        $this->render();
     }
 
 }
