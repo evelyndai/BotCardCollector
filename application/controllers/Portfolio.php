@@ -24,6 +24,12 @@ class Portfolio extends Application {
         if ($user == null) {
             $user = $this->session->userdata('username');
         }
+        
+        //initiate the peanuts
+//        $state = $this->botserver->get_state();
+//        if($state == 3 && $state ==2){
+//            $this->player->initPeanut(100);
+//        }
 
 
         //Trading Activities
