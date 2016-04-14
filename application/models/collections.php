@@ -8,33 +8,33 @@ class Collections extends main_Model {
 
     //get players card collection
     function get_cards($current_player) {
-        // $collection = $this->db->get_where('collections', array('Player' => $current_player))->result_array();
-        // return $collection;
+        $collection = $this->db->get_where('collections', array('Player' => $current_player))->result_array();
+        return $collection;
 
-        $dataArray = array("token" => "hi");
+        //$dataArray = array("token" => "hi");
         // $collectionstring = $this->collections->php_post($dataArray, "/data/certificates");
         // $collections= explode("\n", $collectionstring);
-        $url = "http://ken-botcards.azurewebsites.net/data/certificates";
-
-        $res = [];
-        if (($handle = fopen ( $url, "r" )) !== FALSE) {
-            $keys = fgetcsv ( $handle, 4096, "," );
-            while ( ($data = fgetcsv ( $handle, 4096, "," )) !== FALSE ) {
-                $res[] = array_combine($keys, $data);
-            }
-            fclose($handle);
-        }
-        var_dump($res);
-
-        print_r($res); die();
-        $collection = [];
-        foreach ($collections as $card)
-        {
-            if ($card['player'] == $current_player && $card['broker'] == 'B06')
-            {
-                array_push($collection, $card['piece']);
-            }
-        }
+        // $url = "http://ken-botcards.azurewebsites.net/data/certificates";
+        //
+        // $res = [];
+        // if (($handle = fopen ( $url, "r" )) !== FALSE) {
+        //     $keys = fgetcsv ( $handle, 4096, "," );
+        //     while ( ($data = fgetcsv ( $handle, 4096, "," )) !== FALSE ) {
+        //         $res[] = array_combine($keys, $data);
+        //     }
+        //     fclose($handle);
+        // }
+        // var_dump($res);
+        //
+        // print_r($res); die();
+        // $collection = [];
+        // foreach ($collections as $card)
+        // {
+        //     if ($card['player'] == $current_player && $card['broker'] == 'B06')
+        //     {
+        //         array_push($collection, $card['piece']);
+        //     }
+        // }
     }
 
     function php_post($data, $url_route)
@@ -74,7 +74,7 @@ class Collections extends main_Model {
         {
             foreach ($collection as $card)
             {
-                $card_array["card".$card] += 1;
+                $card_array["card".$card['Piece']] += 1;
             }
             return $card_array;
         }
