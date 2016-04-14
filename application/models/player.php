@@ -18,6 +18,12 @@ class Player extends main_Model2 {
       
         return $query->result_array();
     }
+    
+    function getPeanuts($player){
+        $query = $this->db->query("SELECT Peanuts FROM players where Player = '".$player."'")->result_array();
+        $peanuts = $query[0]["Peanuts"];
+        return $peanuts;
+    }
 
 
 }
