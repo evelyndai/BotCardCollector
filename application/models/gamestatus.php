@@ -6,6 +6,7 @@ class Gamestatus extends main_Model{
   protected $series = array();
   protected $collection = array();
   protected $players = array();
+  protected $transactions = array();
   protected $total_cards;
   protected $cards_left;
   protected $collection_info = array();
@@ -64,6 +65,9 @@ class Gamestatus extends main_Model{
         }
       }
     }
+
+    //Update transactions
+    $this->transactions = $this->db->get('transactions')->result_array();
   }
 
   //Returns an array with information about players
@@ -91,6 +95,10 @@ class Gamestatus extends main_Model{
 
   function get_collection_info(){
     return $this->collection_info;
+  }
+
+  function get_transactions(){
+    return $this->transactions;
   }
 }
 ?>
