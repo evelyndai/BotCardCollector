@@ -5,7 +5,7 @@
         <p>Peanuts: {peanuts}</p>
         <form method = "post">
             <input type="submit" name="buyCards" value='Buy cards' />
-        </form>  {status}</div>
+        </form>{status}</div>
     <div id="trading">
         <p class='portfolioTitle'> Trading Activities </p>
         <table class="table">

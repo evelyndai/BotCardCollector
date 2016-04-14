@@ -37,11 +37,10 @@ class Registration extends Application {
                 'player' => $username,
                 'Peanuts' => '100',
                 'Password' => $password,
+                'Role' => 'user',
                 'Avatar' => '',
             );
             $this->user->insertUser($data);
-            
-            
         }
         redirect('/', 'refresh');
 //        if($result[0] == null){
