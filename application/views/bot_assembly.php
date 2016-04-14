@@ -8,7 +8,7 @@
         {
             if($value['amount'] > 0)
             {
-                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
+                echo "<option value=" . $value['certificate'] . ">" . $value['card'] . " (" . $value['amount'] . ")</option>";
             }
         }
         ?>
@@ -22,7 +22,7 @@
         {
             if($value['amount'] > 0)
             {
-                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
+                echo "<option value=" . $value['certificate'] . ">" . $value['card'] . " (" . $value['amount'] . ")</option>";
             }
         }
         ?>
@@ -36,13 +36,13 @@
         {
             if($value['amount'] > 0)
             {
-                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
+                echo "<option value=" . $value['certificate'] . ">" . $value['card'] . " (" . $value['amount'] . ")</option>";
             }
         }
         ?>
     </select>
     <br /><br /><br /><br /><br />
-    <button type="button">Assemble</button>
+    <button type="button">Sell</button>
     <br />
     <label>{post}</label>
 </div>
