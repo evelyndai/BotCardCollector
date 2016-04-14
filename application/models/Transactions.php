@@ -16,16 +16,17 @@ class Transactions extends main_Model2 {
 
         $dataArray = array(
                 "team" => "B06",
-                "token" => "8d798b21a61aa0616d12050aedfdb64e",
+                "token" => "8accb54d65c8757c83fa568d168c5d48",
                 "player" => 'Evelyn');
             $method = $this->botserver->php_post($dataArray, "/data/certificates");
         echo $method;
-        $rows = explode("\n", $method);
-
+        //$rows = explode("\n", $method);
+        $rows = str_getcsv($method, "\n");
         $array = array();
         foreach ($rows as $row) {
             $array[] = str_getcsv($row);
         }
+        print_r($array);
         return $array;
     }
 

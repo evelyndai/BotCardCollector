@@ -61,16 +61,16 @@ class Portfolio extends Application {
 
 
         //Buy Button
+       
         if (!is_null($this->input->post('buyCards'))) {
             $dataArray = array(
                 "team" => "B06",
-                "token" => "8d798b21a61aa0616d12050aedfdb64e",
+                "token" => "8accb54d65c8757c83fa568d168c5d48",
                 "player" => 'Evelyn');
             $method = $this->botserver->php_post($dataArray, "/buy");
             $this->data['status'] = $method;
             $peanuts = $peanuts - 20;
 
-//            $movies = new SimpleXMLElement($method);
 
             $elm = new SimpleXMLElement($method);
             foreach ($elm->xpath('//certificate') as $certificate) {
