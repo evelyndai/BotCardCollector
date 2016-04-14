@@ -28,9 +28,9 @@ class Botserver extends main_Model {
   function get_token()
   {
       $dataArray = array("team" => "B06", "name" => "FilthyCasuals","password" => "tuesday");
-      $token = $this->botserver->php_post($dataArray, "/register");
-      
-      return $token;
+      $handle = $this->botserver->php_post($dataArray, "/register");
+      $agent = new SimpleXMLElement($handle);
+      return $agent->token;
   }
 }
 ?>
