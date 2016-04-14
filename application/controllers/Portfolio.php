@@ -18,36 +18,40 @@ class Portfolio extends Application {
     //  The normal pages
     //-------------------------------------------------------------
 
-    function index($user = null) {
+    function index($player = null) {
         $this->data['pagebody'] = 'portfolio'; // this is the view we want shown
-
-        if ($user == null) {
+        $this->data['status'] = "";
+        $this->botserver->get_token();
+        $currentUser = $this->session->userdata('username');
+        if ($player == null) {
             $user = $this->session->userdata('username');
         }
-        
+        else{
+            $user = $player;
+        }
+
         //initiate the peanuts
 //        $state = $this->botserver->get_state();
 //        if($state == 3 && $state ==2){
 //            $this->player->initPeanut(100);
 //        }
-
-
+//        
+//        
+//        
         //Trading Activities
-        $transaction = $this->Transactions->getTrans();
-        $trans = array();
-
-        foreach ($transaction as $record) {
-            $trans[] = $record;
-        }
-        $this->data['transactions'] = $trans;
+        $transaction = $this->Transactions->get_trans($user);
+        $this->data['transactions'] = $transaction;
 
 
         //Holdings
         $card_count = $this->collections->get_cards($user);
         $card_counts = $this->collections->sort_cards($card_count);
 
-        foreach ($card_counts as $key => $value) {
-            $this->data[$key] = $value;
+        if ($card_counts > 0) {
+            foreach ($card_counts as $key => $value) {
+
+                $this->data[$key] = $value;
+            }
         }
 
 
@@ -67,26 +71,28 @@ class Portfolio extends Application {
 
 
         //Buy Button
-
         if (!is_null($this->input->post('buyCards'))) {
             if ($peanuts >= 20) {
-//                $token = $this->botserver->get_token();
-//                while ($token == null) {
-//                    
-//                }
-//                echo $token;
+                $token = $this->session->userdata('token');
                 $dataArray = array(
                     "team" => "B06",
-                    "token" => "d15298e2c0ee0599b81f4ae2ce05ad12",
-                    "player" => $user);
+                    "token" => $token,
+                    "player" => $currentUser);
+
                 $method = $this->botserver->php_post($dataArray, "/buy");
-                $this->data['status'] = $method;
+
                 if ($this->getCardToken($method) != null) {
-                    $this->updatePeanuts($peanuts, $user);
+                    $this->updatePeanuts($peanuts, $currentUser);
+                    redirect('/portfolio', false);
                 }
+                else{
+                     $this->data['status'] = $method;
+                    }
+            } else {
+                redirect('/portfolio', false);
+                $this->data['status'] = "you don't have enough peanuts!";
             }
-        } else {
-            $this->data['status'] = "you don't have enough peanuts!";
+            
         }
 
 
