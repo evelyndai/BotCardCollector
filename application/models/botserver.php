@@ -148,7 +148,7 @@ class Botserver extends main_Model {
       {
         if ($row[2] == "b06")
         {
-          $collection[] = array("Player" => $row[3], "Piece" => $row[1], "Token" => $row[0], "Datetime" => $row[4]);
+          $collection[] = array("Player" => strtolower($row[3]), "Piece" => $row[1], "Token" => $row[0], "Datetime" => $row[4]);
         }
       }
     }
