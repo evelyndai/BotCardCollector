@@ -27,6 +27,7 @@ class Welcome extends Application {
 		$this->Gamestatus->update_gamestatus();
 		$gamestatus_title = "Game Status";
     $playerstatus_title = "Player Status";
+		$transactions_title = "Recent Transactions";
 		$total_cards = 0;
 		$cards_left = 0;
 	  $store_data = "";
@@ -40,6 +41,7 @@ class Welcome extends Application {
 		$cards_left = $this->Gamestatus->get_cards_left();
 		$total_cards = $this->Gamestatus->get_total_cards();
 		$collection_info = $this->Gamestatus->get_collection_info();
+		$transactions = $this->Gamestatus->get_transactions();
 
 		//Create the information being viewed on the page
     $store_data = "There are " . $cards_left . "/" . $total_cards . " cards left in the store.<br/>";
@@ -54,13 +56,24 @@ class Welcome extends Application {
     foreach($players as $record){
       $player_data[] = array('playerlink' => "portfolio/".$record['Player'], 'playername' => $record['Player'] , 'playerpeanuts' => $record['Peanuts'] , 'playerequity' => $record['Equity']);
     }
+		$counter = 0;
+		foreach($transactions as $record){
+			$counter++;
+			if($counter > 5){
+				break;
+			}
+			$transaction_data[] = array('playerlink' => "portfolio/".$record['Player'], 'playername' => $record['Player'], 'action' => $record['Trans'], 'transaction_series' => $record['Series']);
+		}
 
 		//Set the information being viewed on the page
 		$this->data['customCSS'] = '/asset/style/home.css';
 		$this->data['gamestatus_title'] = $gamestatus_title;
 		$this->data['playerstatus_title'] = $playerstatus_title;
+		$this->data['transactions_title'] = $transactions_title;
 		$this->data['gamestatus'] = $store_data . $series_data . $player_store_data;
 		$this->data['playerstatus'] = $player_data;
+		$this->data['transactions'] = $transaction_data;
+		$this->data['token'] = $this->botserver->get_token();
 		$this->render();
 	}
 }
