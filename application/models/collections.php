@@ -41,7 +41,7 @@ class Collections extends main_Model {
         //build array of cards with counts set to 0
         foreach ($card_list as $card)
         {
-            $card_array["card".$card['Card']] = 0;
+            $card_array[] = array('card' => $card['Card'], 'amount' => 0, "certificate" => "");
         }
 
         //add 1 to count for each card of a given type owned by the player
@@ -49,7 +49,16 @@ class Collections extends main_Model {
         {
             foreach ($collection as $card)
             {
-                $card_array["card".$card['piece']] += 1;
+                $index = 0;
+                foreach ($card_array as $cardarraycard)
+                {
+                    if ($card['piece'] == $cardarraycard['card'])
+                    {
+                        $card_array[$index]['amount'] += 1;
+                        $card_array[$index]["certificate"] = $card['certificate'];
+                    }
+                    $index ++;
+                }
             }
         }
         return $card_array;

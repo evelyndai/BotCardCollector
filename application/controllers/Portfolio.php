@@ -66,7 +66,7 @@ class Portfolio extends Application {
             if ($peanuts >= 20) {
 //                $token = $this->botserver->get_token();
 //                while ($token == null) {
-//                    
+//
 //                }
 //                echo $token;
                 $dataArray = array(
