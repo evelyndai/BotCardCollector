@@ -33,13 +33,13 @@ class Collections extends main_Model {
     //Sort cards based on type, return array of card type counts
     function sort_cards($collection) {
         //get list of all card types
-        $card_list = $this->db->query('SELECT DISTINCT(Piece) FROM botcards.collections')->result_array();
+        $card_list = $this->db->query('SELECT Card FROM botcards.cards')->result_array();
         $card_array = [];
 
         //build array of cards with counts set to 0
         foreach ($card_list as $card)
         {
-            $card_array["card".$card['Piece']] = 0;
+            $card_array["card".$card['Card']] = 0;
         }
 
         //add 1 to count for each card of a given type owned by the player
