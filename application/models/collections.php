@@ -51,8 +51,8 @@ class Collections extends main_Model {
             {
                 $card_array["card".$card['piece']] += 1;
             }
-            return $card_array;
         }
+        return $card_array;
 
     }
 

@@ -22,19 +22,22 @@ class BotAssembly extends Application {
 		$bot_cards = [];
 
 		//build arrays of card pieces and counts, seperated by top, middle and bottom
-		foreach ($card_count as $key => $value)
+		if (count($card_count) > 0)
 		{
-			if (substr($key, -1) == "0")
+			foreach ($card_count as $key => $value)
 			{
-				$top_cards[$key] = $value;
-			}
-			else if (substr($key, -1) == "1")
-			{
-				$mid_cards[$key] = $value;
-			}
-			else if (substr($key, -1) == "2")
-			{
-				$bot_cards[$key] = $value;
+				if (substr($key, -1) == "0")
+				{
+					$top_cards[$key] = $value;
+				}
+				else if (substr($key, -1) == "1")
+				{
+					$mid_cards[$key] = $value;
+				}
+				else if (substr($key, -1) == "2")
+				{
+					$bot_cards[$key] = $value;
+				}
 			}
 		}
 
