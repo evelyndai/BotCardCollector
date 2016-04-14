@@ -66,7 +66,7 @@ class Portfolio extends Application {
                 "team" => "B06",
                 "token" => "8d798b21a61aa0616d12050aedfdb64e",
                 "player" => 'Evelyn');
-            $method = $this->collections->php_post($dataArray, "/buy");
+            $method = $this->botserver->php_post($dataArray, "/buy");
             $this->data['status'] = $method;
             $peanuts = $peanuts - 20;
 
