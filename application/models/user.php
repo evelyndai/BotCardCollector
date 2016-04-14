@@ -28,6 +28,7 @@ Class User extends CI_Model {
             return false;
         }
     }
+    //check if user exists
     function checkUser($username) {
          $this->db->select('player, password');
         $this->db->from('players');
