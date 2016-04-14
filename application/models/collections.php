@@ -27,6 +27,8 @@ class Collections extends main_Model {
         $result = file_get_contents($url, false, $context);
         // if ($result === FALSE) { /* Handle error */ }
 
+//        print_r($result);
+//        die();
         return $result;
     }
 
