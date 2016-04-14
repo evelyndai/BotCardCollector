@@ -6,9 +6,9 @@
         //add owned pieces to drop down, skip if # owned is 0
         foreach($topcards as $key => $value)
         {
-            if($value > 0)
+            if($value['amount'] > 0)
             {
-                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
+                echo "<option value=" . $value['certificate'] . ">" . $value['card'] . " (" . $value['amount'] . ")</option>";
             }
         }
         ?>
@@ -20,9 +20,9 @@
         //add owned pieces to drop down, skip if # owned is 0
         foreach($midcards as $key => $value)
         {
-            if($value > 0)
+            if($value['amount'] > 0)
             {
-                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
+                echo "<option value=" . $value['certificate'] . ">" . $value['card'] . " (" . $value['amount'] . ")</option>";
             }
         }
         ?>
@@ -34,15 +34,17 @@
         //add owned pieces to drop down, skip if # owned is 0
         foreach($botcards as $key => $value)
         {
-            if($value > 0)
+            if($value['amount'] > 0)
             {
-                echo "<option value=" . substr($key, 4) . ">" . substr($key, 4) . " (" . $value . ")</option>";
+                echo "<option value=" . $value['certificate'] . ">" . $value['card'] . " (" . $value['amount'] . ")</option>";
             }
         }
         ?>
     </select>
     <br /><br /><br /><br /><br />
-    <button type="button">Assemble</button>
+    <form method = "post">
+        <input type="submit" name="buyCards" value='ASSEMBLE AND ROLL OUT' />
+    </form>
     <br />
     <label>{post}</label>
 </div>

@@ -26,15 +26,15 @@ class BotAssembly extends Application {
 		{
 			foreach ($card_count as $key => $value)
 			{
-				if (substr($key, -1) == "0")
+				if (substr($value['card'], -1) == "0")
 				{
 					$top_cards[$key] = $value;
 				}
-				else if (substr($key, -1) == "1")
+				else if (substr($value['card'], -1) == "1")
 				{
 					$mid_cards[$key] = $value;
 				}
-				else if (substr($key, -1) == "2")
+				else if (substr($value['card'], -1) == "2")
 				{
 					$bot_cards[$key] = $value;
 				}
@@ -50,6 +50,12 @@ class BotAssembly extends Application {
 		$this->data['topcards'] = $top_cards;
 		$this->data['midcards'] = $mid_cards;
 		$this->data['botcards'] = $bot_cards;
+
+		//Handle Selling of cards
+		if (!is_null($this->input->post('buyCards')))
+		{
+			
+		}
 
 		$this->render();
 	}
