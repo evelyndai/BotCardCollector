@@ -28,17 +28,24 @@ class Login extends Application {
 
     function login() {
         $this->data['pagebody'] = 'login';
-        $credential = $this->input->post('username');
-        $this->session->set_userdata('username', $credential);
-        $this->data['username'] = $credential;
-        $this->render();
+        $username = $this->input->post('username');
+        $result = $this->user->login($username, $this->input->post('password'));
+        
+        if($result[0] == null){
+            redirect('/', 'refresh');
+        }else{
+            $this->session->set_userdata('username', $result[0]->player);
+            $this->data['username'] = $result[0]->player;
+            redirect('/', 'refresh');
+        }
+        
+        
     }
 
     function logout() {
         $this->data['pagebody'] = 'login';
-        
         $this->session->set_userdata('username', '');
-
+        redirect('/', 'refresh');
         $this->render();
     }
 
