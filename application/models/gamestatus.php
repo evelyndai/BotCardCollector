@@ -10,6 +10,7 @@ class Gamestatus extends main_Model{
   protected $total_cards;
   protected $cards_left;
   protected $collection_info = array();
+  protected $equity_info = array();
 
   //GameStatus Constructor
   function _construct(){
@@ -47,15 +48,20 @@ class Gamestatus extends main_Model{
     $this->cards_left = $this->total_cards;
 
     //Update collection
-    $this->collection = $this->db->get('collections')->result_array();
+
+    //$this->collection = $this->db->get('collections')->result_array();
+
+    $this->collection = $this->botserver->get_collection();
+
     //Manipulate collection data to create player and series information
     foreach($this->collection as $record){
       $this->cards_left = $this->cards_left - 1;
       $coll_series = intval(substr($record['Piece'],0,2));
+      $piece_part = intval(substr($record['Piece'],4,1));
       $serieskey = array_search($coll_series,array_column($this->series,'Series'));
       $this->series[$serieskey]['Used'] = $this->series[$serieskey]['Used'] + 1;
       $playerkey = array_search($record['Player'],array_column($this->players,'Player'));
-      $this->players[$playerkey]['Equity'] = $this->players[$playerkey]['Equity'] + $this->series[$serieskey]['Value'];
+      $this->players[$playerkey]['Equity'] += 1;
       if($record['Player'] == $current_player){
         if(empty($this->collection_info[$coll_series])){
           $this->collection_info[$coll_series] = 1;
@@ -67,7 +73,18 @@ class Gamestatus extends main_Model{
     }
 
     //Update transactions
-    $this->transactions = $this->db->get('transactions')->result_array();
+    $this->transactions = $this->botserver->get_transactions();
+    //$this->transactions = array_map('str_getcsv', $this->transactions);
+    /*
+    $csv = array_map('str_getcsv', file($this->transactions));
+    array_walk($csv, function(&$a) use ($csv) {
+      $a = array_combine($csv[0], $a);
+    });
+    array_shift($csv); # remove column header
+
+    $this->transactions = $csv;
+    */
+    //$this->transactions = $this->db->get('transactions')->result_array();
   }
 
   //Returns an array with information about players
