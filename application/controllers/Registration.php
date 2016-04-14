@@ -31,19 +31,19 @@ class Registration extends Application {
         $password = $this->input->post('password');
         $result = $this->user->checkUser($username);
         if($result[0] != null){
-            redirect('/', 'refresh');
+            
         }else{
             $data = array(
                 'player' => $username,
-                'Peanuts' => '',
+                'Peanuts' => '100',
                 'Password' => $password,
                 'Avatar' => '',
             );
             $this->user->insertUser($data);
-            redirect('/', 'refresh');
+            
             
         }
-        
+        redirect('/', 'refresh');
 //        if($result[0] == null){
 //            redirect('/', 'refresh');
 //        }else{
