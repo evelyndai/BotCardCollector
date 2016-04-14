@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `collections` (
 --
 
 INSERT INTO `collections` VALUES
---('Token', 'Piece', 'Player', 'Datetime'),
+-- ('Token', 'Piece', 'Player', 'Datetime'),
 ('115531', '13c-2', 'Mickey', '2016.02.01-09:01:00'),
 ('1208C0', '13c-2', 'Donald', '2016.02.01-09:01:02'),
 ('14B502', '11a-0', 'Donald', '2016.02.01-09:01:04'),
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `players` (
 --
 
 INSERT INTO `players` VALUES
---('Player', 'Peanuts', 'Password', 'Avatar'),
+-- ('Player', 'Peanuts', 'Password', 'Avatar'),
 ('Mickey', '200', 'password', 'file.png'),
 ('Donald', '35', 'password', 'file.png'),
 ('George', '500', 'password', 'file.png'),
@@ -114,7 +114,7 @@ CREATE TABLE IF NOT EXISTS `series` (
 --
 
 INSERT INTO `series` VALUES
---('Series', 'Description', 'Frequency', 'Value'),
+-- ('Series', 'Description', 'Frequency', 'Value'),
 ('11', 'Basic house bots', '100', '20'),
 ('13', 'House butlers', '50', '50'),
 ('26', 'Home companions', '20', '200');
@@ -138,7 +138,7 @@ CREATE TABLE IF NOT EXISTS `transactions` (
 --
 
 INSERT INTO `transactions` VALUES
---('DateTime', 'Player', 'Series', 'Trans'),
+-- ('DateTime', 'Player', 'Series', 'Trans'),
 ('2016.02.01-09:01:00', 'Henry', '11', 'sell'),
 ('2016.02.01-09:01:05', 'George', 'x', 'buy'),
 ('2016.02.01-09:01:10', 'Mickey', 'x', 'buy'),
@@ -159,7 +159,7 @@ CREATE TABLE IF NOT EXISTS `cards` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 INSERT INTO `cards` VALUES
---('Card'),
+-- ('Card'),
 ('11a-0'),
 ('11a-1'),
 ('11a-2'),
