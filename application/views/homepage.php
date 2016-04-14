@@ -37,3 +37,6 @@
     {/transactions}
   </table>
 </div>
+<div>
+  {token}
+</div>
