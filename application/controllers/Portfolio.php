@@ -61,32 +61,44 @@ class Portfolio extends Application {
 
 
         //Buy Button
+
         if (!is_null($this->input->post('buyCards'))) {
-            $dataArray = array(
-                "team" => "B06",
-                "token" => "8d798b21a61aa0616d12050aedfdb64e",
-                "player" => 'Evelyn');
-            $method = $this->botserver->php_post($dataArray, "/buy");
-            $this->data['status'] = $method;
-            $peanuts = $peanuts - 20;
-
-//            $movies = new SimpleXMLElement($method);
-
-            $elm = new SimpleXMLElement($method);
-            foreach ($elm->xpath('//certificate') as $certificate) {
-                echo $certificate->token;
+            if ($peanuts >= 20) {
+//                $token = $this->botserver->get_token();
+//                while ($token == null) {
+//                    
+//                }
+//                echo $token;
+                $dataArray = array(
+                    "team" => "B06",
+                    "token" => "d15298e2c0ee0599b81f4ae2ce05ad12",
+                    "player" => $user);
+                $method = $this->botserver->php_post($dataArray, "/buy");
+                $this->data['status'] = $method;
+                if ($this->getCardToken($method) != null) {
+                    $this->updatePeanuts($peanuts, $user);
+                }
             }
+        } else {
+            $this->data['status'] = "you don't have enough peanuts!";
         }
 
-        function putCollection($xml) {
-            $elm = new SimpleXMLElement($xml);
-            foreach ($elm->certificate->token as $token) {
-                echo $token;
-            }
-        }
+
 
         //Pass these on to the view
         $this->render();
+    }
+
+    function getCardToken($xml) {
+        $elm = new SimpleXMLElement($xml);
+        $token = $elm->certificate->token;
+        return $token;
+    }
+
+    function updatePeanuts($peanuts, $player) {
+        $peanuts = $peanuts - 20;
+        $this->player->updatePeanut($peanuts, $player);
+        $this->data['peanuts'] = $peanuts;
     }
 
 }

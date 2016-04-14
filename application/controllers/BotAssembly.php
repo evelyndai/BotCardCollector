@@ -12,6 +12,7 @@ class BotAssembly extends Application {
 		$this->data['pagebody'] = 'bot_assembly';
 		//Get cards owned by a user
 		$card_count = $this->collections->get_cards($this->session->userdata('username'));
+
 		//get counts of individual card pieces
 		$card_count = $this->collections->sort_cards($card_count);
 
