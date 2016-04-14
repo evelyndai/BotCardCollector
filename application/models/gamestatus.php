@@ -22,7 +22,12 @@ class Gamestatus extends main_Model{
     $this->cards_left = 0;
 
     //Setup necessities
-    $current_player = $this->session->userdata('username');
+    if($this->session->userdata('username')){
+      $current_player = $this->session->userdata('username');
+    }
+    else{
+      $current_player = "no_player";
+    }
 
     //Update players
     $this->players = $this->db->get('players')->result_array();

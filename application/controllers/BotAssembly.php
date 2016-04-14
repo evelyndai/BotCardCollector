@@ -37,13 +37,13 @@ class BotAssembly extends Application {
 			}
 		}
 
-		// $dataArray = array("team" => "B06", "name" => "FilthyCasuals","password" => "tuesday");
-		//
-		// $this->data['post'] = $this->collections->php_post($dataArray, "/register");
+		$dataArray = array("team" => "B06", "name" => "FilthyCasuals","password" => "tuesday");
 
-		$dataArray = array("token" => "hi");
-        $this->data['post'] = $this->collections->php_post($dataArray, "/data/certificates");
-		
+		$this->data['post'] = $this->botserver->php_post($dataArray, "/register");
+
+		// $dataArray = array("token" => "hi");
+        // $this->data['post'] = $this->collections->php_post($dataArray, "/data/certificates");
+
 
 		$this->data['topcards'] = $top_cards;
 		$this->data['midcards'] = $mid_cards;

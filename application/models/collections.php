@@ -11,7 +11,7 @@ class Collections extends main_Model {
         $collection = $this->db->get_where('collections', array('Player' => $current_player))->result_array();
         return $collection;
 
-        $dataArray = array("token" => "hi");
+        //$dataArray = array("token" => "hi");
         // $collectionstring = $this->collections->php_post($dataArray, "/data/certificates");
         // $collections= explode("\n", $collectionstring);
         // $url = "http://ken-botcards.azurewebsites.net/data/certificates";
@@ -37,26 +37,6 @@ class Collections extends main_Model {
         // }
     }
 
-    function php_post($data, $url_route)
-    {
-        $url = "http://ken-botcards.azurewebsites.net".$url_route;
-        // use key 'http' even if you send the request to https://...
-        $options = array(
-            'http' => array(
-                'header'  => "Content-type: application/x-www-form-urlencoded\r\n",
-                'method'  => 'POST',
-                'content' => http_build_query($data)
-            )
-        );
-        $context  = stream_context_create($options);
-        $result = file_get_contents($url, false, $context);
-        // if ($result === FALSE) { /* Handle error */ }
-
-//        print_r($result);
-//        die();
-        return $result;
-    }
-
     //Sort cards based on type, return array of card type counts
     function sort_cards($collection) {
         //get list of all card types
@@ -74,7 +54,7 @@ class Collections extends main_Model {
         {
             foreach ($collection as $card)
             {
-                $card_array["card".$card] += 1;
+                $card_array["card".$card['Piece']] += 1;
             }
             return $card_array;
         }
