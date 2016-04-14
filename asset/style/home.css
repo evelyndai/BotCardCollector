@@ -4,6 +4,12 @@
   margin: 4px;
 }
 
+.subtitle{
+  font-size: 14pt;
+  font-weight: bold;
+  margin: 4px;
+}
+
 .gamestatus{
   float: left;
   margin: 10px;
@@ -12,6 +18,13 @@
 }
 
 .playerstatus{
+  float: left;
+  margin: 10px;
+  padding: 20px;
+  border: 1px solid black;
+}
+
+.transactions{
   float: left;
   margin: 10px;
   padding: 20px;
