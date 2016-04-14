@@ -1,7 +1,11 @@
 
 
 <div class="portfolio">
-    <div id='ptitle'>{players} <p> 's Portfolio</p></div>
+    <div id='ptitle'>{players} <p> 's Portfolio    </p>
+        <p>Peanuts: {peanuts}</p>
+        <form method = "post">
+            <input type="submit" name="buyCards" value='Buy cards' />
+        </form>  {status}</div>
     <div id="trading">
         <p class='portfolioTitle'> Trading Activities </p>
         <table class="table">
