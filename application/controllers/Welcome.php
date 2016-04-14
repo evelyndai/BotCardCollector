@@ -24,11 +24,11 @@ class Welcome extends Application {
 		$this->data['pagebody'] = 'homepage';
 		$current_player = $this->session->userdata('username');
 		$this->load->model('Gamestatus');
+		$this->Gamestatus->update_gamestatus();
 		$gamestatus_title = "Game Status";
     $playerstatus_title = "Player Status";
 		$total_cards = 0;
 		$cards_left = 0;
-
 	  $store_data = "";
 	  $series_data = "";
 	  $player_data = array();

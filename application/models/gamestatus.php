@@ -63,34 +63,28 @@ class Gamestatus extends main_Model{
 
   //Returns an array with information about players
   function get_players(){
-    $this->update_gamestatus();
     return $this->players;
   }
 
   //Returns an array with information about card series
   function get_series(){
-    $this->update_gamestatus();
     return $this->series;
   }
 
   //Returns an array with information about card collections
   function get_collection(){
-    $this->update_gamestatus();
     return $this->collection;
   }
 
   function get_total_cards(){
-    $this->update_gamestatus();
     return $this->total_cards;
   }
 
   function get_cards_left(){
-    $this->update_gamestatus();
     return $this->cards_left;
   }
 
   function get_collection_info(){
-    $this->update_gamestatus();
     return $this->collection_info;
   }
 }
