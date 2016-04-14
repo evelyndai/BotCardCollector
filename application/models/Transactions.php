@@ -15,10 +15,10 @@ class Transactions extends main_Model2 {
     function getTrans() {
 
         $dataArray = array(
-                "team" => "B06",
-                "token" => "8accb54d65c8757c83fa568d168c5d48",
-                "player" => 'Evelyn');
-            $method = $this->botserver->php_post($dataArray, "/data/certificates");
+            "team" => "B06",
+            "token" => $this->botserver->get_token(),
+            "player" => 'Evelyn');
+        $method = $this->botserver->php_post($dataArray, "/data/certificates");
         echo $method;
         //$rows = explode("\n", $method);
         $rows = str_getcsv($method, "\n");
@@ -29,6 +29,8 @@ class Transactions extends main_Model2 {
         print_r($array);
         return $array;
     }
+
+
 
 }
 

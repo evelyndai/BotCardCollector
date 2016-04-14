@@ -13,17 +13,21 @@ class Player extends main_Model2 {
     }
 
     // add an item to an order
-    function getPlayer(){
+    function getPlayer() {
         $query = $this->db->query('SELECT Player FROM players');
-      
+
         return $query->result_array();
     }
-    
-    function getPeanuts($player){
-        $query = $this->db->query("SELECT Peanuts FROM players where Player = '".$player."'")->result_array();
+
+    function getPeanuts($player) {
+        $query = $this->db->query("SELECT Peanuts FROM players where Player = '" . $player . "'")->result_array();
         $peanuts = $query[0]["Peanuts"];
         return $peanuts;
     }
 
+    function updatePeanut($peanuts, $player) {
+        $query = $this->db->query("UPDATE Players SET Peanuts =" . $peanuts . " WHERE Player = '" . $player . "'");
+        return $query;
+    }
 
 }
