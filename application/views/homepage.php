@@ -1,6 +1,6 @@
 <div class="gamestatus">
   <div class="title">{gamestatus_title}</div>
-  <div class="subtitle" id="round_number">{gamestatus_round}</div>
+  <div class="subtitle" id="round_number">{gamestatus_state}</div>
   {gamestatus}
 </div>
 <div class="playerstatus">
@@ -36,7 +36,4 @@
     </tr>
     {/transactions}
   </table>
-</div>
-<div>
-  {token}
 </div>
