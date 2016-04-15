@@ -7,7 +7,7 @@ class Botserver extends main_Model {
 
   function php_post($data, $url_route)
   {
-      $url = "http://ken-botcards.azurewebsites.net".$url_route;
+      $url = "http://botcards.jlparry.com/".$url_route;
       // use key 'http' even if you send the request to https://...
       $options = array(
           'http' => array(
@@ -26,7 +26,7 @@ class Botserver extends main_Model {
   }
 
   function php_get($url_route){
-    $url = "http://ken-botcards.azurewebsites.net".$url_route;
+    $url = "http://botcards.jlparry.com/".$url_route;
     // use key 'http' even if you send the request to https://...
     $options = array(
         'http' => array(
