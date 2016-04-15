@@ -60,9 +60,9 @@ class Gamestatus extends main_Model{
       $piece_part = intval(substr($record['Piece'],4,1));
       $serieskey = array_search($coll_series,array_column($this->series,'Series'));
       $this->series[$serieskey]['Used'] = $this->series[$serieskey]['Used'] + 1;
-      $playerkey = array_search($record['Player'],array_column($this->players,'Player'));
+      $playerkey = strtolower(array_search($record['Player'],array_column($this->players,'Player')));
       $this->players[$playerkey]['Equity'] += 1;
-      if($record['Player'] == $current_player){
+      if(strtolower($record['Player']) == strtolower($current_player)){
         if(empty($this->collection_info[$coll_series])){
           $this->collection_info[$coll_series] = 1;
         }
