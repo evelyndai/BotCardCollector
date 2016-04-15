@@ -10,6 +10,8 @@ class BotAssembly extends Application {
 	function index()
 	{
 		$this->data['pagebody'] = 'bot_assembly';
+		$this->botserver->get_token();
+
 		//Get cards owned by a user
 		$card_count = $this->collections->get_cards($this->session->userdata('username'));
 
@@ -20,6 +22,22 @@ class BotAssembly extends Application {
 		$top_cards = [];
 		$mid_cards = [];
 		$bot_cards = [];
+
+		//Handle Selling of cards
+		if (!is_null($this->input->post('buyCards')))
+		{
+			$team = 'b06';
+			$token = $this->session->userdata('token');
+			$player = $this->session->userdata('username');
+			$top = $_POST['TopPieces'];
+			$middle = $_POST['MiddlePieces'];
+			$bottom = $_POST['BottomPieces'];
+
+			$dataArray = array("team" => $team, "token" => $token, "player" => $player, "top" => $top, "middle" => $middle, "bottom" => $bottom);
+		    $handle = $this->botserver->php_post($dataArray, "/sell");
+
+			// print_r($_POST['TopPieces']); die();
+		}
 
 		//build arrays of card pieces and counts, seperated by top, middle and bottom
 		if (count($card_count) > 0)
@@ -41,21 +59,9 @@ class BotAssembly extends Application {
 			}
 		}
 
-		$this->data['post'] = $this->botserver->get_token();
-
-		// $dataArray = array("token" => "hi");
-        // $this->data['post'] = $this->collections->php_post($dataArray, "/data/certificates");
-
-
 		$this->data['topcards'] = $top_cards;
 		$this->data['midcards'] = $mid_cards;
 		$this->data['botcards'] = $bot_cards;
-
-		//Handle Selling of cards
-		if (!is_null($this->input->post('buyCards')))
-		{
-			
-		}
 
 		$this->render();
 	}
