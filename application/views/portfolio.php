@@ -92,6 +92,18 @@
                 <td class="holdings"><img src="/asset/images/13d-2.jpeg" title="13d-2"/> <br />{card13d-2}</td>
             </tr>
             <tr>
+                <td>26a</td>
+                <td class="holdings"><img src="/asset/images/26a-0.jpeg" title="26a-0"/> <br />{card26a-0}</td>
+                <td class="holdings"><img src="/asset/images/26a-1.jpeg" title="26a-1"/> <br />{card26a-1}</td>
+                <td class="holdings"><img src="/asset/images/26a-2.jpeg" title="26a-2"/> <br />{card26a-2}</td>
+            </tr>
+            <tr>
+                <td>26b</td>
+                <td class="holdings"><img src="/asset/images/26b-0.jpeg" title="26b-0"/> <br />{card26b-0}</td>
+                <td class="holdings"><img src="/asset/images/26b-1.jpeg" title="26b-1"/> <br />{card26b-1}</td>
+                <td class="holdings"><img src="/asset/images/26b-2.jpeg" title="26b-2"/> <br />{card26b-2}</td>
+            </tr>
+            <tr>
                 <td>26h</td>
                 <td class="holdings"><img src="/asset/images/26h-0.jpeg" title="26h-0"/> <br />{card26h-0}</td>
                 <td class="holdings"><img src="/asset/images/26h-1.jpeg" title="26h-1"/> <br />{card26h-1}</td>

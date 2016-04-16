@@ -1,8 +1,7 @@
 <?php
 
 /**
- * Portfolio page. Show a table of all the author pictures. Clicking on one should show their quote.
- * Our quotes model has been autoloaded, because we use it everywhere.
+ * Portfolio page. 
  *
  * controllers/Portfolio.php
  * By Evelyn Dai
@@ -50,7 +49,7 @@ class Portfolio extends Application {
         if ($card_counts > 0) {
             foreach ($card_counts as $key => $value) {
 
-                $this->data[$key] = $value;
+                $this->data["card".$value["card"]] = $value["amount"];
             }
         }
 
