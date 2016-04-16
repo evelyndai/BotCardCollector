@@ -1,9 +1,8 @@
 <?php
 
 /**
- * Portfolio page. Show a table of all the author pictures. Clicking on one should show their quote.
- * Our quotes model has been autoloaded, because we use it everywhere.
- * 
+ * Portfolio page. 
+ *
  * controllers/Portfolio.php
  * By Evelyn Dai
  * ------------------------------------------------------------------------
@@ -18,54 +17,48 @@ class Portfolio extends Application {
     //  The normal pages
     //-------------------------------------------------------------
 
-    function index($user = null) {
+    function index($player = null) {
         $this->data['pagebody'] = 'portfolio'; // this is the view we want shown
-
-        if ($user == null) {
+        $this->data['status'] = "";
+        $this->botserver->get_token();
+        $currentUser = $this->session->userdata('username');
+        if ($player == null) {
             $user = $this->session->userdata('username');
         }
-
-        //Trading Activities
-        $transaction = $this->Transactions->getTrans($user);
-        $trans = array();
-
-        foreach ($transaction as $record) {
-            $trans[] = $record;
+        else{
+            $user = $player;
         }
-        $this->data['transactions'] = $trans;
-        //$this->data['debug'] = print_r($query->result_array(), true); 
+
+        //initiate the peanuts
+//        $state = $this->botserver->get_state();
+//        if($state == 3 && $state ==2){
+//            $this->player->initPeanut(100);
+//        }
+//
+//
+//
+        //Trading Activities
+        $transaction = $this->Transactions->get_trans($user);
+        $this->data['transactions'] = $transaction;
+
+
         //Holdings
         $card_count = $this->collections->get_cards($user);
         $card_counts = $this->collections->sort_cards($card_count);
-        $this->data['cards'] = $card_counts;
-        
-        
-        $this->data['elevena0'] = $card_counts['elevena0'];
-        $this->data['elevena1'] = $card_counts['elevena1'];
-        $this->data['elevena2'] = $card_counts['elevena2'];
 
-        $this->data['elevenb0'] = $card_counts['elevenb0'];
-        $this->data['elevenb1'] = $card_counts['elevenb1'];
-        $this->data['elevenb2'] = $card_counts['elevenb2'];
+        if ($card_counts > 0) {
+            foreach ($card_counts as $key => $value) {
 
-        $this->data['elevenc0'] = $card_counts['elevenc0'];
-        $this->data['elevenc1'] = $card_counts['elevenc1'];
-        $this->data['elevenc2'] = $card_counts['elevenc2'];
+                $this->data["card".$value["card"]] = $value["amount"];
+            }
+        }
 
-        $this->data['thirteenc0'] = $card_counts['thirteenc0'];
-        $this->data['thirteenc1'] = $card_counts['thirteenc1'];
-        $this->data['thirteenc2'] = $card_counts['thirteenc2'];
 
-        $this->data['thirteend0'] = $card_counts['thirteend0'];
-        $this->data['thirteend1'] = $card_counts['thirteend1'];
-        $this->data['thirteend2'] = $card_counts['thirteend2'];
 
-        $this->data['twentysixh0'] = $card_counts['twentysixh0'];
-        $this->data['twentysixh1'] = $card_counts['twentysixh1'];
-        $this->data['twentysixh2'] = $card_counts['twentysixh2'];
-        
+
         //Dropdown select player
         $players = $this->player->getPlayer();
+        $peanuts = $this->player->getPeanuts($user);
         $p = array();
         foreach ($players as $player) {
             $p[$player['Player']] = $player['Player'];
@@ -73,11 +66,50 @@ class Portfolio extends Application {
         //Parse selected player to the url and redirect it
         $js = 'id="players" onChange="select_player(this);"';
         $this->data['players'] = form_dropdown('players', $p, $user, $js);
+        $this->data['peanuts'] = $peanuts;
+
+
+        //Buy Button
+        if (!is_null($this->input->post('buyCards'))) {
+            if ($peanuts >= 20) {
+                $token = $this->session->userdata('token');
+                $dataArray = array(
+                    "team" => "B06",
+                    "token" => $token,
+                    "player" => $currentUser);
+
+                $method = $this->botserver->php_post($dataArray, "/buy");
+
+                if ($this->getCardToken($method) != null) {
+                    $this->updatePeanuts($peanuts, $currentUser);
+                    redirect('/portfolio', false);
+                }
+                else{
+                     $this->data['status'] = $method;
+                    }
+            } else {
+                redirect('/portfolio', false);
+                $this->data['status'] = "you don't have enough peanuts!";
+            }
+
+        }
+
 
 
         //Pass these on to the view
-
         $this->render();
+    }
+
+    function getCardToken($xml) {
+        $elm = new SimpleXMLElement($xml);
+        $token = $elm->certificate->token;
+        return $token;
+    }
+
+    function updatePeanuts($peanuts, $player) {
+        $peanuts = $peanuts - 20;
+        $this->player->updatePeanut($peanuts, $player);
+        $this->data['peanuts'] = $peanuts;
     }
 
 }

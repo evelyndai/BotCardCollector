@@ -22,72 +22,68 @@ class Welcome extends Application {
 	function index()
 	{
 		$this->data['pagebody'] = 'homepage';
-		//Setting variables
 		$current_player = $this->session->userdata('username');
-		$total_cards = 0;
-		//Grabbing info from database
-		$series = $this->db->get('series')->result_array();
-		$collection = $this->db->get('collections')->result_array();
-		$players = $this->db->get('players')->result_array();
-		//Setting up variables for later use
-		$collection_info = array();
-		$cards_left = 0;
-		$total_cards = 0;
-		$store_data = "";
-		$series_data = "";
-		$player_data = array();
-		$player_store_data = "";
-		//Manipulate raw data on series information to generate more data
-		for($x = 0; $x < count($series); $x++){
-			$series[$x]['Used'] = 0;
-			$total_cards = $total_cards + $series[$x]['Frequency'];
-		}
-		$cards_left = $total_cards;
-		//Setup players array to hold equity information
-		for($x = 0; $x < count($players); $x++){
-			$players[$x]['Equity'] = 0;
-		}
-		//Manipulate raw collection data to create player and series information
-		foreach($collection as $record){
-			$cards_left = $cards_left - 1;
-			$coll_series = intval(substr($record['Piece'],0,2));
-			$serieskey = array_search($coll_series,array_column($series,'Series'));
-			$series[$serieskey]['Used'] = $series[$serieskey]['Used'] + 1;
-			$playerkey = array_search($record['Player'],array_column($players,'Player'));
-			$players[$playerkey]['Equity'] = $players[$playerkey]['Equity'] + $series[$serieskey]['Value'];
-			if($record['Player'] == $current_player){
-				if(empty($collection_info[$coll_series])){
-					$collection_info[$coll_series] = 1;
-				}
-				else{
-					$collection_info[$coll_series] = $collection_info[$coll_series] + 1;
-				}
-			}
-		}
-		//Create the information being viewed on the page
+		$this->load->model('Gamestatus');
+		$this->Gamestatus->update_gamestatus();
 		$gamestatus_title = "Game Status";
-		$playerstatus_title = "Player Status";
-		$store_data = "There are " . $cards_left . "/" . $total_cards . " cards left in the store.<br/>";
-		foreach($series as $record){
-		 	$record_left = $record['Frequency'] - $record['Used'];
-			$series_data .= "In the " . $record['Series'] . " Series there are " . $record_left . " cards left.<br/>";
-			if(empty($collection_info[$record['Series']])){
-				$collection_info[$record['Series']] = 0;
+    $playerstatus_title = "Player Status";
+		$transactions_title = "Recent Transactions";
+		$total_cards = 0;
+		$cards_left = 0;
+	  $store_data = "";
+	  $series_data = "";
+	  $player_data = array();
+	  $player_store_data = "";
+
+		$players = $this->Gamestatus->get_players();
+		$series = $this->Gamestatus->get_series();
+		$collection = $this->Gamestatus->get_collection();
+		$cards_left = $this->Gamestatus->get_cards_left();
+		$total_cards = $this->Gamestatus->get_total_cards();
+		$collection_info = $this->Gamestatus->get_collection_info();
+		$transactions = $this->Gamestatus->get_transactions();
+
+		//Create the information being viewed on the page
+    $store_data = "There are " . $cards_left . "/" . $total_cards . " cards left in the store.<br/>";
+    foreach($series as $record){
+      $record_left = $record['Frequency'] - $record['Used'];
+      $series_data .= "In the " . $record['Series'] . " Series there are " . $record_left . " cards left.<br/>";
+      if(empty($collection_info[$record['Series']])){
+        $collection_info[$record['Series']] = 0;
+      }
+      $player_store_data .= "You have bought " . $collection_info[$record['Series']] . " cards from the " . $record['Series'] . " Series.<br/>";
+    }
+    foreach($players as $record){
+      $player_data[] = array('playerlink' => "portfolio/".$record['Player'], 'playername' => $record['Player'] , 'playerpeanuts' => $record['Peanuts'] , 'playerequity' => $record['Equity']);
+    }
+		$counter = 0;
+		if($transactions != null){
+			foreach($transactions as $record){
+				$counter++;
+				if($counter > 5){
+					break;
+				}
+				$transaction_data[] = array('playerlink' => "portfolio/".$record[3], 'playername' => $record[3], 'action' => $record[5], 'transaction_series' => $record[4]);
 			}
-			$player_store_data .= "You have bought " . $collection_info[$record['Series']] . " cards from the " . $record['Series'] . " Series.<br/>";
 		}
-		foreach($players as $record){
-			$player_data[] = array('playerlink' => "portfolio/".$record['Player'], 'playername' => $record['Player'] , 'playerpeanuts' => $record['Peanuts'] , 'playerequity' => $record['Equity']);
+		else{
+			$transaction_data[] = array('playerlink' => "portfolio", 'playername' => "No active players", 'action' => "No actions", 'transaction_series' => 'x');
 		}
+
+
 		//Set the information being viewed on the page
 		$this->data['customCSS'] = '/asset/style/home.css';
 		$this->data['gamestatus_title'] = $gamestatus_title;
 		$this->data['playerstatus_title'] = $playerstatus_title;
+		$this->data['transactions_title'] = $transactions_title;
 		$this->data['gamestatus'] = $store_data . $series_data . $player_store_data;
 		$this->data['playerstatus'] = $player_data;
+		$this->data['transactions'] = $transaction_data;
+		$this->data['gamestatus_state'] = 'Round #'.$this->botserver->get_round().' - '.$this->botserver->get_state();
 		$this->render();
 	}
 }
 
 /* End of file Welcome.php */
 /* Location: application/controllers/Welcome.php */
+?>
