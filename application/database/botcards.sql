@@ -91,9 +91,9 @@ CREATE TABLE IF NOT EXISTS `players` (
 
 INSERT INTO `players` VALUES
 -- ('Player', 'Peanuts', 'Password', 'Avatar'),
-('Mickey', '200', 'password','user', 'file.png'),
-('Donald', '35', 'password','user', 'file.png'),
-('George', '500', 'password','user', 'file.png'),
+('Mickey', '100', 'password','user', 'file.png'),
+('Donald', '100', 'password','user', 'file.png'),
+('George', '100', 'password','user', 'file.png'),
 ('Henry', '100', 'password','user', 'file.png');
 
 -- --------------------------------------------------------
