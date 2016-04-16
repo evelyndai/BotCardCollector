@@ -1,6 +1,7 @@
 <div id="select_bots">
     <p class='portfolioTitle'> Build a Bot! </p>
-    <select name="Top Pieces" onchange="load_top_image(this);">
+    <form method = "post">
+    <select name="TopPieces" onchange="load_top_image(this);">
         <option value=0>'Pick a top for your bot!'</option>
         <?php
         //add owned pieces to drop down, skip if # owned is 0
@@ -14,7 +15,7 @@
         ?>
     </select>
     <br /><br /><br /><br /><br />
-    <select name="Middle Pieces" onchange="load_mid_image(this);">
+    <select name="MiddlePieces" onchange="load_mid_image(this);">
         <option value=0>'Pick a middle for your bot!'</option>
         <?php
         //add owned pieces to drop down, skip if # owned is 0
@@ -28,7 +29,7 @@
         ?>
     </select>
     <br /><br /><br /><br /><br />
-    <select name="Bottom Pieces" onchange="load_bot_image(this);">
+    <select name="BottomPieces" onchange="load_bot_image(this);">
         <option value=0>'Pick a bottom for your bot!'</option>
         <?php
         //add owned pieces to drop down, skip if # owned is 0
@@ -42,9 +43,9 @@
         ?>
     </select>
     <br /><br /><br /><br /><br />
-    <button type="button">Sell</button>
+        <input type="submit" name="buyCards" value='ASSEMBLE AND ROLL OUT' />
+    </form>
     <br />
-    <label>{post}</label>
 </div>
 <!-- image src will be changed based on selected item from dropdown menus -->
 <div id="assemble_images">
