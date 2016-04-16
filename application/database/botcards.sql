@@ -81,6 +81,7 @@ CREATE TABLE IF NOT EXISTS `players` (
   `Player` varchar(32) DEFAULT NULL,
   `Peanuts` varchar(7) DEFAULT NULL,
   `Password` varchar(10) DEFAULT NULL,
+  `Role` varchar(10) DEFAULT NULL,
   `Avatar` varchar(300) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -90,10 +91,10 @@ CREATE TABLE IF NOT EXISTS `players` (
 
 INSERT INTO `players` VALUES
 -- ('Player', 'Peanuts', 'Password', 'Avatar'),
-('Mickey', '200', 'password', 'file.png'),
-('Donald', '35', 'password', 'file.png'),
-('George', '500', 'password', 'file.png'),
-('Henry', '100', 'password', 'file.png');
+('Mickey', '200', 'password','user', 'file.png'),
+('Donald', '35', 'password','user', 'file.png'),
+('George', '500', 'password','user', 'file.png'),
+('Henry', '100', 'password','user', 'file.png');
 
 -- --------------------------------------------------------
 
@@ -169,12 +170,30 @@ INSERT INTO `cards` VALUES
 ('11c-0'),
 ('11c-1'),
 ('11c-2'),
+('11d-0'),
+('11d-1'),
+('11d-2'),
+('11e-0'),
+('11e-1'),
+('11e-2'),
+('13a-0'),
+('13a-1'),
+('13a-2'),
+('13b-0'),
+('13b-1'),
+('13b-2'),
 ('13c-0'),
 ('13c-1'),
 ('13c-2'),
 ('13d-0'),
 ('13d-1'),
 ('13d-2'),
+('26a-0'),
+('26a-1'),
+('26a-2'),
+('26b-0'),
+('26b-1'),
+('26b-2'),
 ('26h-0'),
 ('26h-1'),
 ('26h-2')

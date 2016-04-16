@@ -8,33 +8,28 @@ class Collections extends main_Model {
 
     //get players card collection
     function get_cards($current_player) {
-        $collection = $this->db->get_where('collections', array('Player' => $current_player))->result_array();
-        return $collection;
+        $dataArray = array("token" => "hi");
+        $CsvString = $this->botserver->php_post($dataArray, "/data/certificates");
+        $Data = str_getcsv($CsvString, "\n"); //parse the rows
+        $rows = [];
+        $collection = [];
 
-        //$dataArray = array("token" => "hi");
-        // $collectionstring = $this->collections->php_post($dataArray, "/data/certificates");
-        // $collections= explode("\n", $collectionstring);
-        // $url = "http://ken-botcards.azurewebsites.net/data/certificates";
-        //
-        // $res = [];
-        // if (($handle = fopen ( $url, "r" )) !== FALSE) {
-        //     $keys = fgetcsv ( $handle, 4096, "," );
-        //     while ( ($data = fgetcsv ( $handle, 4096, "," )) !== FALSE ) {
-        //         $res[] = array_combine($keys, $data);
-        //     }
-        //     fclose($handle);
-        // }
-        // var_dump($res);
-        //
-        // print_r($res); die();
-        // $collection = [];
-        // foreach ($collections as $card)
-        // {
-        //     if ($card['player'] == $current_player && $card['broker'] == 'B06')
-        //     {
-        //         array_push($collection, $card['piece']);
-        //     }
-        // }
+        foreach($Data as $Row)
+        {
+            $rows[] = str_getcsv($Row, ",");
+        }
+        if (count($rows) > 1 )
+        {
+            foreach ($rows as $row)
+            {
+                if ($row[3] == strtolower($current_player) && $row[2] == "b06")
+                {
+                    $collection[] = array("piece" => $row[1], "certificate" => $row[0]);
+                }
+            }
+        }
+
+        return $collection;
     }
 
     //Sort cards based on type, return array of card type counts
@@ -46,7 +41,7 @@ class Collections extends main_Model {
         //build array of cards with counts set to 0
         foreach ($card_list as $card)
         {
-            $card_array["card".$card['Card']] = 0;
+            $card_array[] = array('card' => $card['Card'], 'amount' => 0, "certificate" => "");
         }
 
         //add 1 to count for each card of a given type owned by the player
@@ -54,10 +49,19 @@ class Collections extends main_Model {
         {
             foreach ($collection as $card)
             {
-                $card_array["card".$card['Piece']] += 1;
+                $index = 0;
+                foreach ($card_array as $cardarraycard)
+                {
+                    if ($card['piece'] == $cardarraycard['card'])
+                    {
+                        $card_array[$index]['amount'] += 1;
+                        $card_array[$index]["certificate"] = $card['certificate'];
+                    }
+                    $index ++;
+                }
             }
-            return $card_array;
         }
+        return $card_array;
 
     }
 

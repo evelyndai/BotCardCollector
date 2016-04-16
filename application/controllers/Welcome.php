@@ -57,13 +57,19 @@ class Welcome extends Application {
       $player_data[] = array('playerlink' => "portfolio/".$record['Player'], 'playername' => $record['Player'] , 'playerpeanuts' => $record['Peanuts'] , 'playerequity' => $record['Equity']);
     }
 		$counter = 0;
-		foreach($transactions as $record){
-			$counter++;
-			if($counter > 5){
-				break;
+		if($transactions != null){
+			foreach($transactions as $record){
+				$counter++;
+				if($counter > 5){
+					break;
+				}
+				$transaction_data[] = array('playerlink' => "portfolio/".$record[3], 'playername' => $record[3], 'action' => $record[5], 'transaction_series' => $record[4]);
 			}
-			$transaction_data[] = array('playerlink' => "portfolio/".$record['Player'], 'playername' => $record['Player'], 'action' => $record['Trans'], 'transaction_series' => $record['Series']);
 		}
+		else{
+			$transaction_data[] = array('playerlink' => "portfolio", 'playername' => "No active players", 'action' => "No actions", 'transaction_series' => 'x');
+		}
+
 
 		//Set the information being viewed on the page
 		$this->data['customCSS'] = '/asset/style/home.css';
@@ -73,7 +79,7 @@ class Welcome extends Application {
 		$this->data['gamestatus'] = $store_data . $series_data . $player_store_data;
 		$this->data['playerstatus'] = $player_data;
 		$this->data['transactions'] = $transaction_data;
-		$this->data['token'] = $this->botserver->get_token();
+		$this->data['gamestatus_state'] = 'Round #'.$this->botserver->get_round().' - '.$this->botserver->get_state();
 		$this->render();
 	}
 }

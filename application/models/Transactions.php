@@ -12,22 +12,33 @@ class Transactions extends main_Model2 {
         parent::__construct('transactions', 'DateTime', 'Player');
     }
 
-    function getTrans() {
+    function get_trans($current_player) {
+        $dataArray = array("token" => "hi");
+        $CsvString = $this->botserver->php_post($dataArray, "/data/transactions");
+        $Data = str_getcsv($CsvString, "\n"); //parse the rows
+        $rows = [];
+        $transaction = [];
 
-        $dataArray = array(
-                "team" => "B06",
-                "token" => "8d798b21a61aa0616d12050aedfdb64e",
-                "player" => 'Evelyn');
-            $method = $this->botserver->php_post($dataArray, "/data/certificates");
-        echo $method;
-        $rows = explode("\n", $method);
-
-        $array = array();
-        foreach ($rows as $row) {
-            $array[] = str_getcsv($row);
+        foreach($Data as $Row)
+        {
+            $rows[] = str_getcsv($Row, ",");
         }
-        return $array;
+        if (count($rows) > 1 )
+        {
+            foreach ($rows as $row)
+            {
+                if ($row[3] == strtolower($current_player) && $row[2] == "b06")
+                {
+                    $transaction[] = array("DateTime" => $row[1], "Player" => $row[3],
+                            "Series" => $row[4],"Trans" => $row[5]);
+                }
+            }
+        }
+
+        return $transaction;
     }
+
+
 
 }
 
