@@ -16,7 +16,8 @@ class Application extends CI_Controller {
         $this->data['title'] = 'BotCardCollector'; // our default title
         $this->errors = array();
         $this->data['pageTitle'] = 'welcome';   // our default page
-       
+        $this->session->userdata['username'];
+        print_r($this->config->item('menu_choice'));
        
     }
 
@@ -31,9 +32,8 @@ class Application extends CI_Controller {
 //        } else {
 //            $this->data['logincred'] = $this->parser->parse('_signin', $this->data, true);
 //        }
-        if(session_id() || $this->session->userdata['username'] == ''){
-            $this->session->userdata['username'] = ''; 
-            $this->data['logincred'] = $this->parser->parse('_signin', $this->data, true);
+        if( $this->session->userdata['username'] == ''){
+             $this->data['logincred'] = $this->parser->parse('_signin', $this->data, true);
              
              
         }else{
