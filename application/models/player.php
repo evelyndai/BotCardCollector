@@ -29,7 +29,7 @@ class Player extends main_Model2 {
         return $query;
     }
     function updatePassword($password, $player) {
-        $query = $this->db->query("UPDATE Players SET Password =" . $password . " WHERE Player = '" . $player . "'");
+        $query = $this->db->query("UPDATE Players SET Password ='" . $password . "' WHERE Player = '" . $player . "'");
         return $query;
     }
     function deletePlayer($player) {
@@ -54,6 +54,10 @@ class Player extends main_Model2 {
         } else {
             return false;
         }
+    }
+    function updateAvatar($avatar, $player) {
+        $query = $this->db->query("UPDATE Players SET Avatar ='" . $avatar . "' WHERE Player = '" . $player . "'");
+        return $query;
     }
 //    function initPeanut($peanuts){
 //        $query = $this->db->query("UPDATE Players SET Peanuts =" . $peanuts);
