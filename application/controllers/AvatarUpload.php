@@ -42,7 +42,7 @@ class AvatarUpload extends Application {
             $this->index();
         } else {
             
-            $this->player->updateAvatar( $this->upload->data()['file_name'], $this->session->userdata['username']);
+            $this->player->updateAvatar($this->upload->data()['file_name'], $this->session->userdata['username']);
            //$this->user->insertAvatar($this->session->userdata['username'], $this->upload->data()['file_name']);
             redirect('/', 'refresh');
         }
