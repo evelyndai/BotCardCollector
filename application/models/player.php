@@ -29,7 +29,10 @@ class Player extends main_Model2 {
         $query = $this->db->query("UPDATE Players SET Peanuts =" . $peanuts . " WHERE Player = '" . $player . "'");
         return $query;
     }
-    
+    function updateAvatar($avatar, $player) {
+        $query = $this->db->query("UPDATE Players SET Avatar ='" . $avatar . "' WHERE Player = '" . $player . "'");
+        return $query;
+    }
 //    function initPeanut($peanuts){
 //        $query = $this->db->query("UPDATE Players SET Peanuts =" . $peanuts);
 //        return $query;

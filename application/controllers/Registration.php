@@ -13,6 +13,7 @@ class Registration extends Application {
     function __construct() {
         parent::__construct();
         $this->data['customCSS'] = '/asset/style/login.css';
+        $this->data['errorMsg'] = '';
     }
 
     //-------------------------------------------------------------
@@ -31,7 +32,8 @@ class Registration extends Application {
         $password = $this->input->post('password');
         $result = $this->user->checkUser($username);
         if($result[0] != null){
-            
+            $this->data['errorMsg'] = 'Please use another name';
+            $this->index();
         }else{
             $data = array(
                 'player' => $username,
@@ -41,8 +43,11 @@ class Registration extends Application {
                 'Avatar' => '',
             );
             $this->user->insertUser($data);
+            $this->session->set_userdata('username', $username);
+            $this->data['username'] = $username;
+            redirect('/avatarUpload', 'refresh');
         }
-        redirect('/', 'refresh');
+        
 //        if($result[0] == null){
 //            redirect('/', 'refresh');
 //        }else{
