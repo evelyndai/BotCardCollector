@@ -32,7 +32,7 @@ class Application extends CI_Controller {
 //        } else {
 //            $this->data['logincred'] = $this->parser->parse('_signin', $this->data, true);
 //        }
-        if(session_id() || $this->session->userdata['username'] == ''){
+        if(!session_id() || $this->session->userdata['username'] == ''){
             $this->session->userdata['username'] = ''; 
             $this->data['logincred'] = $this->parser->parse('_signin', $this->data, true);
              
