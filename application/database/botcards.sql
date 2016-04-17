@@ -94,7 +94,8 @@ INSERT INTO `players` VALUES
 ('Mickey', '200', 'password','user', 'file.png'),
 ('Donald', '35', 'password','user', 'file.png'),
 ('George', '500', 'password','user', 'file.png'),
-('Henry', '100', 'password','user', 'file.png');
+('Henry', '100', 'password','user', 'file.png'),
+('admin', '100', 'admin','admin', 'admin.png');
 
 -- --------------------------------------------------------
 
