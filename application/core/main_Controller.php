@@ -25,13 +25,7 @@ class Application extends CI_Controller {
      * Render this page
      */
     function render() {
-//        $cred = $this->session->userdata['username'];
-//        if ($cred !== '') {
-//            $this->data['username'] = $this->session->userdata['username'];
-//            $this->data['logincred'] = $this->parser->parse('_signout', $this->data, true);
-//        } else {
-//            $this->data['logincred'] = $this->parser->parse('_signin', $this->data, true);
-//        }
+
         if(session_id() || $this->session->userdata['username'] == ''){
             $this->session->userdata['username'] = ''; 
             $this->data['logincred'] = $this->parser->parse('_signin', $this->data, true);

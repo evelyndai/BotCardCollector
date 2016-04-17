@@ -55,6 +55,10 @@ class Player extends main_Model2 {
             return false;
         }
     }
+    function updateAvatar($avatar, $player) {
+        $query = $this->db->query("UPDATE Players SET Avatar ='" . $avatar . "' WHERE Player = '" . $player . "'");
+        return $query;
+    }
 //    function initPeanut($peanuts){
 //        $query = $this->db->query("UPDATE Players SET Peanuts =" . $peanuts);
 //        return $query;
